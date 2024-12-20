@@ -1,16 +1,16 @@
 import streamlit as st
-from db import authenticate_user
+from api.db import get_user
 
 def login():
     st.title("Login")
     email = st.text_input("Email")
     password = st.text_input("Password", type="password")
-    if st.button("Connect"):
-        user = authenticate_user(email, password)
+    
+    if st.button("Login"):
+        user = get_user(email)
         if user:
-            st.success("Logged in successfully!")
             st.session_state['user'] = user
-            st.rerun()
+            st.session_state['page'] = 'dashboard'
         else:
             st.error("Invalid email or password")
 

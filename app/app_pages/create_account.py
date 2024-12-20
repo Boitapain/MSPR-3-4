@@ -1,5 +1,5 @@
 import streamlit as st
-from db import add_user
+from api.db import add_user
 
 def create_account():
     st.title("Create Account")

@@ -29,6 +29,16 @@ def add_user(name, email, password, is_admin=False):
         ''', (name, email, hashed_password, is_admin))
     conn.close()
 
+def get_user(email):
+    conn = create_connection()
+    user = conn.execute('''
+        SELECT * FROM users WHERE email = ?
+    ''', (email,)).fetchone()
+    conn.close()
+    if user:
+        return user
+    return None
+
 def authenticate_user(email, password):
     conn = create_connection()
     user = conn.execute('''
