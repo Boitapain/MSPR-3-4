@@ -11,16 +11,25 @@ def main():
         st.session_state['new_user'] = False
     if 'user' not in st.session_state:
         st.session_state['user'] = None
+    if 'logged_in' not in st.session_state:
+        st.session_state['logged_in'] = False
 
-    if st.session_state['user']:
+    st.set_page_config(
+        page_title="Disease Track",
+        page_icon="🦠",
+        layout="centered",
+        initial_sidebar_state="auto",
+    )
+
+    if st.session_state['logged_in'] or st.session_state.get("page") == "dashboard":
         dashboard(st.session_state['user'])
+        
     elif st.session_state.get("page") == "create_account":
         create_account()
         if st.session_state['new_user']:
             st.session_state['page'] = None
     else:
         login()
-        st.button("Create Account", on_click=navigate_to_create_account)
 
 if __name__ == "__main__":
     main()
