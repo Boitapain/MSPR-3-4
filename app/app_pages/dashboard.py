@@ -4,9 +4,11 @@ from app_pages.dashboard_pages.profile import profile
 from app_pages.dashboard_pages.settings import settings
 
 def dashboard(user):
+    # Initialize session state for dashboard page if it doesn't exist
     if 'dashboard_page' not in st.session_state:
         st.session_state['dashboard_page'] = 'home'
 
+    # Custom CSS for styling
     st.markdown("""
     <style>
         h1 {
@@ -37,23 +39,35 @@ def dashboard(user):
     </style>
     """, unsafe_allow_html=True)
     
+    # Sidebar with navigation buttons
     with st.sidebar:
-        st.button("Home",type="tertiary", icon=":material/home:", on_click=lambda: st.session_state.update({"dashboard_page": "home"}))
+        # Home button
+        st.button("Home", type="tertiary", icon=":material/home:", on_click=lambda: st.session_state.update({"dashboard_page": "home"}))
         
         st.divider()
         
-        st.button("CSV Import",type="tertiary", icon=":material/download:", on_click=lambda: st.session_state.update({"dashboard_page": "settings"}))
+        # CSV Import button
+        st.button("CSV Import", type="tertiary", icon=":material/download:", on_click=lambda: st.session_state.update({"dashboard_page": "csv_import"}))
         
         st.divider()
         
-        st.button("Account",type="tertiary", icon=":material/account_circle:", on_click=lambda: st.session_state.update({"dashboard_page": "profile"}))
-
+        # Profile button
+        st.button("Profile", type="tertiary", icon=":material/person:", on_click=lambda: st.session_state.update({"dashboard_page": "profile"}))
+        
+        st.divider()
+        
+        # Settings button
+        st.button("Settings", type="tertiary", icon=":material/settings:", on_click=lambda: st.session_state.update({"dashboard_page": "settings"}))
+    
+    # Display the appropriate page based on session state
     if st.session_state['dashboard_page'] == 'home':
         home(user)
     elif st.session_state['dashboard_page'] == 'profile':
         profile(user)
     elif st.session_state['dashboard_page'] == 'settings':
         settings(user)
+    elif st.session_state['dashboard_page'] == 'csv_import':
+        st.write("CSV Import Page")  # Placeholder for CSV Import page
 
 if __name__ == "__main__":
     dashboard("User")

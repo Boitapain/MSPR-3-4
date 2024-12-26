@@ -2,24 +2,11 @@ import sqlite3
 import bcrypt
 
 def create_connection():
-    conn = sqlite3.connect('disease_track.db')
-    return conn
-
-def create_user_table():
-    conn = create_connection()
-    with conn:
-        conn.execute('''
-            CREATE TABLE IF NOT EXISTS users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL,
-                email TEXT NOT NULL,
-                password TEXT NOT NULL,
-                isAdmin BOOLEAN NOT NULL CHECK (isAdmin IN (0, 1))
-            );
-        ''')
-    conn.close()
+    """Create a database connection and return the connection object."""
+    return sqlite3.connect('your_database.db')
 
 def add_user(name, email, password, is_admin=False):
+    """Add a new user to the database."""
     conn = create_connection()
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
     with conn:
@@ -30,6 +17,7 @@ def add_user(name, email, password, is_admin=False):
     conn.close()
 
 def get_user(email):
+    """Retrieve a user from the database by email."""
     conn = create_connection()
     user = conn.execute('''
         SELECT * FROM users WHERE email = ?
@@ -40,6 +28,7 @@ def get_user(email):
     return None
 
 def authenticate_user(email, password):
+    """Authenticate a user by email and password."""
     conn = create_connection()
     user = conn.execute('''
         SELECT * FROM users WHERE email = ?
@@ -48,5 +37,3 @@ def authenticate_user(email, password):
     if user and bcrypt.checkpw(password.encode('utf-8'), user[3]):
         return user
     return None
-
-create_user_table()
