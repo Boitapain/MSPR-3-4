@@ -1,5 +1,5 @@
 import streamlit as st
-from api.db import add_user
+import requests
 
 def create_account():
     # Display the title and subtitle
@@ -29,12 +29,19 @@ def create_account():
                 st.error("All fields are required")
             else:
                 if password == confirm_password:
-                    # Add user to the database
-                    add_user(name, email, password)
-                    st.success("Account created successfully!")
-                    st.session_state['new_user'] = True
-                    st.session_state['page'] = 'login'
-                    st.rerun()
+                    # Add user to the database via API
+                    response = requests.post("http://api.example.com/register", json={
+                        "name": name,
+                        "email": email,
+                        "password": password
+                    })
+                    if response.status_code == 201:
+                        st.success("Account created successfully!")
+                        st.session_state['new_user'] = True
+                        st.session_state['page'] = 'login'
+                        st.rerun()
+                    else:
+                        st.error("Failed to create account: " + response.json().get("message", "Unknown error"))
                 else:
                     # Show error if passwords do not match
                     st.error("Passwords do not match")
