@@ -1,10 +1,28 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
+from flask_swagger_ui import get_swaggerui_blueprint
 from db import add_user, get_users, authenticate_user, initialize_db
+import os
 
 app = Flask(__name__)
 
 # Initialize the database
 initialize_db()
+
+# Swagger UI setup
+SWAGGER_URL = '/swagger'
+API_URL = '/static/openapi.yaml'
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "Disease Track API"
+    }
+)
+app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
+
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static', path)
 
 @app.route('/users', methods=['GET'])
 def users():

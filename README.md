@@ -66,9 +66,21 @@ cd MSPR1
    ```
 
 ### Running the App
-To run the app, execute the following command:
-```bash
-streamlit run app/app.py
-```
 
-This will start the Streamlit server and open the app in your default web browser.
+1. Start the Flask API:
+    ```bash
+    python app/api/api.py
+    ```
+
+2. In a new terminal, start the Streamlit app:
+    ```bash
+    streamlit run app/app.py
+    ```
+
+This will start the Flask API server and the Streamlit server. The Streamlit app will open in your default web browser.
+
+### Using Swagger UI
+
+To test the API endpoints using Swagger UI, open your web browser and navigate to: http://127.0.0.1:5000/swagger
+
+You will see the Swagger UI interface where you can test the API endpoints defined in the `openapi.yaml` file.
