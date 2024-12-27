@@ -67,7 +67,7 @@ def dashboard(user):
     elif st.session_state['dashboard_page'] == 'settings':
         settings(user)
     elif st.session_state['dashboard_page'] == 'csv_import':
-        st.write("CSV Import Page")  # Placeholder for CSV Import page
+        st.title("CSV Import Page")  # Placeholder for CSV Import page
 
 if __name__ == "__main__":
     dashboard("User")

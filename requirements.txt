@@ -2,3 +2,5 @@ streamlit
 bcrypt
 jupyter
 pandas
+requests
+flask

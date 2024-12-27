@@ -1,7 +1,7 @@
 import streamlit as st
-from pages.login import login
-from pages.create_account import create_account
-from pages.dashboard import dashboard
+from app_pages.login import login
+from app_pages.create_account import create_account
+from app_pages.dashboard import dashboard
 
 def navigate_to_create_account():
     st.session_state["page"] = "create_account"
@@ -36,7 +36,6 @@ def main():
     else:
         # Otherwise, show the login page
         login()
-        st.button("Create Account", on_click=navigate_to_create_account)
 
 if __name__ == "__main__":
     main()
