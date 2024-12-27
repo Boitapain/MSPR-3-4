@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: Disease Track API
+  version: 0.1.0
+  description: API for Disease Track application
+
+paths:
+  /users:
+    get:
+      summary: Test to get all users
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        email:
+                          type: string
+                        isAdmin:
+                          type: boolean
+        '404':
+          description: No users found
+        '500':
+          description: Internal server error
+
+  /register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: User registered successfully
+        '400':
+          description: All fields are required
+        '500':
+          description: Internal server error
+
+  /login:
+    post:
+      summary: Login a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: User logged in successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      isAdmin:
+                        type: boolean
+        '401':
+          description: Invalid email or password

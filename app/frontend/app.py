@@ -1,7 +1,7 @@
 import streamlit as st
-from app_pages.login import login
-from app_pages.create_account import create_account
-from app_pages.dashboard import dashboard
+from login import login
+from create_account import create_account
+from dashboard import dashboard
 
 def navigate_to_create_account():
     st.session_state["page"] = "create_account"

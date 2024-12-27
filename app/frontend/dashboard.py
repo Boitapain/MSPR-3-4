@@ -1,7 +1,7 @@
 import streamlit as st
-from app_pages.dashboard_pages.home import home
-from app_pages.dashboard_pages.profile import profile
-from app_pages.dashboard_pages.settings import settings
+from dashboard_pages.home import home
+from dashboard_pages.profile import profile
+from dashboard_pages.settings import settings
 
 def dashboard(user):
     # Initialize session state for dashboard page if it doesn't exist
