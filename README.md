@@ -18,7 +18,7 @@ The app is a web-based application built using Streamlit. It allows users to log
 ### Cloning the Repository
 To clone the repository, run the following command:
 ```bash
-git clone https://github.com/yourusername/MSPR1.git
+git clone https://github.com/Boitapain/MSPR1.git
 cd MSPR1
 ```
 
