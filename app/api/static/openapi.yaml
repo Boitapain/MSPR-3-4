@@ -7,7 +7,7 @@ info:
 paths:
   /users:
     get:
-      summary: Test to get all users
+      summary: Get all users
       responses:
         '200':
           description: A list of users
@@ -93,3 +93,85 @@ paths:
                         type: boolean
         '401':
           description: Invalid email or password
+
+  /diseases:
+    get:
+      summary: Get all diseases
+      responses:
+        '200':
+          description: A list of diseases
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  diseases:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        Id:
+                          type: integer
+                        Nom:
+                          type: string
+                        Country_Region:
+                          type: string
+                        Confirmed:
+                          type: integer
+                        Deaths:
+                          type: integer
+                        Recovered:
+                          type: integer
+                        Active:
+                          type: integer
+                        New_cases:
+                          type: integer
+                        New_deaths:
+                          type: integer
+                        New_recovered:
+                          type: integer
+        '404':
+          description: No diseases found
+        '500':
+          description: Internal server error
+
+  /update_diseases:
+    post:
+      summary: Update diseases
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                diseases:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      Id:
+                        type: integer
+                      Nom:
+                        type: string
+                      Country_Region:
+                        type: string
+                      Confirmed:
+                        type: integer
+                      Deaths:
+                        type: integer
+                      Recovered:
+                        type: integer
+                      Active:
+                        type: integer
+                      New_cases:
+                        type: integer
+                      New_deaths:
+                        type: integer
+                      New_recovered:
+                        type: integer
+      responses:
+        '200':
+          description: Diseases updated successfully
+        '500':
+          description: Internal server error
