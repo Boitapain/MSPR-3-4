@@ -1,5 +1,11 @@
 # Ignore virtual environment
 venv/
+.venv/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
+
+app/__pycache__/
+app/.pytest_cache/
+app/frontend/__pycache__/
+app/disease_track.db
