@@ -5,7 +5,7 @@ import bcrypt
 
 def create_connection():
     """Create a database connection and return the connection object."""
-    return sqlite3.connect('../disease_track.db')
+    return sqlite3.connect('app/disease_track.db')
 
 def initialize_db():
     """Initialize the database with the required tables."""
@@ -34,6 +34,7 @@ def initialize_db():
                 New_recovered INT NOT NULL
             );
         ''')
+    conn.commit()
     conn.close()
 
 
@@ -87,3 +88,6 @@ def get_diseases():
     ''').fetchall()
     conn.close()
     return diseases
+
+if __name__ == "__main__":
+    initialize_db()
