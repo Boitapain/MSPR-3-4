@@ -1,6 +1,6 @@
 import streamlit as st
 from dashboard_pages.home import home
-from dashboard_pages.profile import profile
+from dashboard_pages.db_viz import db_viz
 from dashboard_pages.settings import settings
 
 def dashboard(user):
@@ -51,8 +51,8 @@ def dashboard(user):
         
         st.divider()
         
-        # Profile button
-        st.button("Profile", type="tertiary", icon=":material/person:", on_click=lambda: st.session_state.update({"dashboard_page": "profile"}))
+        # Database Visualization button
+        st.button("Database", type="tertiary", icon=":material/person:", on_click=lambda: st.session_state.update({"dashboard_page": "database"}))
         
         st.divider()
         
@@ -62,8 +62,8 @@ def dashboard(user):
     # Display the appropriate page based on session state
     if st.session_state['dashboard_page'] == 'home':
         home(user)
-    elif st.session_state['dashboard_page'] == 'profile':
-        profile(user)
+    elif st.session_state['dashboard_page'] == 'database':
+        db_viz()
     elif st.session_state['dashboard_page'] == 'settings':
         settings(user)
 if __name__ == "__main__":

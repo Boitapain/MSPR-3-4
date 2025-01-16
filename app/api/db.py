@@ -17,6 +17,19 @@ def initialize_db():
                 password TEXT NOT NULL,
                 isAdmin BOOLEAN NOT NULL DEFAULT 0
             );
+            
+            CREATE TABLE Disease(
+                Id INT PRIMARY KEY AUTOINCREMENT,
+                Nom TEXT NOT NULL,
+                Country_Region TEXT NOT NULL,
+                Confirmed INT NOT NULL,
+                Deaths INT NOT NULL,
+                Recovered INT NOT NULL,
+                Active INT NOT NULL,
+                New_cases INT NOT NULL,
+                New_deaths INT NOT NULL,
+                New_recovered INT NOT NULL,
+            );
         ''')
     conn.close()
 
