@@ -63,7 +63,7 @@ def dashboard(user):
     if st.session_state['dashboard_page'] == 'home':
         home(user)
     elif st.session_state['dashboard_page'] == 'database':
-        db_viz()
+        db_viz(user)
     elif st.session_state['dashboard_page'] == 'settings':
         settings(user)
 if __name__ == "__main__":

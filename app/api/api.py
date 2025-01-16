@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_swagger_ui import get_swaggerui_blueprint
-from db import add_user, get_users, authenticate_user, initialize_db
+from db import add_user, get_users, authenticate_user, get_diseases, initialize_db
 import os
 
 app = Flask(__name__)
@@ -59,5 +59,15 @@ def login():
     else:
         return jsonify({"message": "Invalid email or password"}), 401
 
+@app.route('/diseases', methods=['GET'])
+def diseases():
+    try:
+        diseases = get_diseases()
+        if not diseases:
+            return jsonify({"message": "No diseases found"}), 404
+        return jsonify({"diseases": diseases}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) 

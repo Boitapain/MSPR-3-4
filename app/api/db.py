@@ -1,6 +1,8 @@
 import sqlite3
 import bcrypt
 
+
+
 def create_connection():
     """Create a database connection and return the connection object."""
     return sqlite3.connect('../disease_track.db')
@@ -17,9 +19,10 @@ def initialize_db():
                 password TEXT NOT NULL,
                 isAdmin BOOLEAN NOT NULL DEFAULT 0
             );
-            
-            CREATE TABLE Disease(
-                Id INT PRIMARY KEY AUTOINCREMENT,
+        ''')
+        conn.execute('''
+            CREATE TABLE IF NOT EXISTS Disease (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Nom TEXT NOT NULL,
                 Country_Region TEXT NOT NULL,
                 Confirmed INT NOT NULL,
@@ -28,10 +31,13 @@ def initialize_db():
                 Active INT NOT NULL,
                 New_cases INT NOT NULL,
                 New_deaths INT NOT NULL,
-                New_recovered INT NOT NULL,
+                New_recovered INT NOT NULL
             );
         ''')
     conn.close()
+
+
+############### User functions ###############
 
 def add_user(name, email, password, is_admin=False):
     """Add a new user to the database."""
@@ -42,6 +48,7 @@ def add_user(name, email, password, is_admin=False):
             INSERT INTO users (name, email, password, isAdmin)
             VALUES (?, ?, ?, ?)
         ''', (name, email, hashed_password, is_admin))
+    conn.commit()
     conn.close()
 
 def get_user(email):
@@ -69,3 +76,14 @@ def get_users():
     ''').fetchall()
     conn.close()
     return [{"id": user[0], "name": user[1], "email": user[2], "isAdmin": user[3]} for user in users]
+
+############### Disease functions ###############
+
+def get_diseases():
+    """Retrieve all diseases from the database."""
+    conn = create_connection()
+    diseases = conn.execute('''
+        SELECT * FROM Disease;
+    ''').fetchall()
+    conn.close()
+    return diseases
