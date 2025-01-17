@@ -18,7 +18,7 @@ def main():
     # Set the page configuration
     st.set_page_config(
         page_title="Disease Track",
-        page_icon="🦠",
+        page_icon="https://mspr-team.gitbook.io/~gitbook/image?url=https%3A%2F%2F4141789323-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Forganizations%252Fu9WT6puw9kHCPITtWSCY%252Fsites%252Fsite_dWsRi%252Ficon%252FSHNWRyAl3InsU3QGPMP5%252FCoronavirus.png%3Falt%3Dmedia%26token%3Dd44d9f14-0f59-49c2-8fe0-3c80809684b8&width=32&dpr=2&quality=100&sign=e351430e&sv=2",
         layout="centered",
         initial_sidebar_state="auto",
     )

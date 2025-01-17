@@ -1,23 +1,25 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
         {
-            "name": "Python: Flask API",
+            "name": "Launch Flask API",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/app/api/api.py",
-            "console": "integratedTerminal",
+            "module": "flask",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/.venv/bin/python:${workspaceFolder}/app:${workspaceFolder}/app/api"
+                "FLASK_APP": "app/api/api.py",
+                "FLASK_DEBUG": "1"
             },
-            "justMyCode": false
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "autoStartBrowser": false
         },
         {
-            "name": "Python: Streamlit",
+            "name": "Launch Streamlit App",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/.venv/bin/streamlit",
@@ -27,9 +29,9 @@
             ],
             "console": "integratedTerminal",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/.venv/bin/python:${workspaceFolder}/app"
+                "STREAMLIT_SERVER_PORT": "8501"
             },
-            "justMyCode": true
+            "python": "${workspaceFolder}/.venv/bin/python3"
         }
     ]
 }
