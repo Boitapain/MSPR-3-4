@@ -17,9 +17,6 @@ def stats(user):
         ])
     
         if not df.empty:
-            st.write("Data Overview:")
-            st.write(df.head())
-            
             # User selection for statistics
             stat_options = [
                 "Total Confirmed Cases by Country",
