@@ -1,5 +1,6 @@
 import streamlit as st
 from dashboard_pages.home import home
+from dashboard_pages.csv_import import csv_import
 from dashboard_pages.db_viz import db_viz
 from dashboard_pages.profile import profile
 
@@ -62,6 +63,8 @@ def dashboard(user):
     # Display the appropriate page based on session state
     if st.session_state['dashboard_page'] == 'home':
         home(user)
+    elif st.session_state['dashboard_page'] == 'csv_import':
+        csv_import(user)
     elif st.session_state['dashboard_page'] == 'database':
         db_viz(user)
     elif st.session_state['dashboard_page'] == 'profile':

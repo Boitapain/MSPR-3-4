@@ -135,7 +135,7 @@ paths:
         '500':
           description: Internal server error
 
-  /update_diseases:
+  /update_diseases_route:
     post:
       summary: Update diseases
       requestBody:
@@ -173,5 +173,7 @@ paths:
       responses:
         '200':
           description: Diseases updated successfully
+        '400':
+          description: No data provided or data contains null values
         '500':
           description: Internal server error

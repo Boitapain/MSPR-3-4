@@ -93,6 +93,11 @@ def update_diseases(df):
     """Update diseases in the database."""
     conn = create_connection()
     df = pd.read_json(StringIO(df))
+
+# Check if 'Id' column exists, if not, generate IDs
+    if 'Id' not in df.columns:
+        df['Id'] = range(1, len(df) + 1)
+
     df.to_sql('Disease', conn, if_exists='replace', index=False)
     conn.commit()
     conn.close()
@@ -103,7 +108,7 @@ if __name__ == "__main__":
     diseases = get_diseases()
     print(diseases)
     
-    json_df = '[{"Id":1,"Nom":"COVID-19","Country_Region":"USA","Confirmed":5000000,"Deaths":150000,"Recovered":2500000,"Active":2350000,"New_cases":50000,"New_deaths":1000,"New_recovered":20000},{"Id":2,"Nom":"Ebola","Country_Region":"Congo","Confirmed":3000,"Deaths":2000,"Recovered":800,"Active":200,"New_cases":50,"New_deaths":20,"New_recovered":30},{"Id":3,"Nom":"SARS","Country_Region":"China","Confirmed":8000,"Deaths":774,"Recovered":7000,"Active":226,"New_cases":100,"New_deaths":10,"New_recovered":50},{"Id":4,"Nom":"MERS","Country_Region":"Saudi Arabia","Confirmed":2600,"Deaths":858,"Recovered":1400,"Active":242,"New_cases":20,"New_deaths":5,"New_recovered":10}]'
+    json_df = '[{"Nom":"COVID-19","Country_Region":"USA","Confirmed":5000000,"Deaths":150000,"Recovered":2500000,"Active":2350000,"New_cases":50000,"New_deaths":1000,"New_recovered":20000},{"Nom":"Ebola","Country_Region":"Congo","Confirmed":3000,"Deaths":2000,"Recovered":800,"Active":200,"New_cases":50,"New_deaths":20,"New_recovered":30},{"Nom":"SARS","Country_Region":"China","Confirmed":8000,"Deaths":774,"Recovered":7000,"Active":226,"New_cases":100,"New_deaths":10,"New_recovered":50},{"Nom":"MERS","Country_Region":"Saudi Arabia","Confirmed":2600,"Deaths":858,"Recovered":1400,"Active":242,"New_cases":20,"New_deaths":5,"New_recovered":10}]'
     update_diseases(json_df)
     
     diseases = get_diseases()
