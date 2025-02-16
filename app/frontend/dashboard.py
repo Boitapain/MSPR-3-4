@@ -2,6 +2,7 @@ import streamlit as st
 from dashboard_pages.home import home
 from dashboard_pages.csv_import import csv_import
 from dashboard_pages.db_viz import db_viz
+from dashboard_pages.stats import stats
 from dashboard_pages.profile import profile
 
 def dashboard(user):
@@ -54,6 +55,11 @@ def dashboard(user):
         
         # Database Visualization button
         st.button("Database", type="tertiary", icon=":material/database:", on_click=lambda: st.session_state.update({"dashboard_page": "database"}))
+
+        st.divider()
+        
+        # Database Visualization button
+        st.button("Statistics", type="tertiary", icon=":material/monitoring:", on_click=lambda: st.session_state.update({"dashboard_page": "statistics"}))
         
         st.divider()
         
@@ -67,6 +73,8 @@ def dashboard(user):
         csv_import(user)
     elif st.session_state['dashboard_page'] == 'database':
         db_viz(user)
+    elif st.session_state['dashboard_page'] == 'statistics':
+        stats(user)
     elif st.session_state['dashboard_page'] == 'profile':
         profile(user)
 if __name__ == "__main__":

@@ -22,7 +22,7 @@ def initialize_db():
         ''')
         conn.execute('''
             CREATE TABLE IF NOT EXISTS Disease (
-                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Id INTEGER PRIMARY KEY,
                 Nom TEXT NOT NULL,
                 Country_Region TEXT NOT NULL,
                 Confirmed INT NOT NULL,
@@ -33,6 +33,22 @@ def initialize_db():
                 New_deaths INT NOT NULL,
                 New_recovered INT NOT NULL
             );
+        ''')
+    conn.commit()
+    conn.close()
+
+def populate_disease_table():
+    """Populate the Disease table with sample data."""
+    conn = create_connection()
+    with conn:
+        conn.execute('''
+            INSERT INTO Disease (Nom, Country_Region, Confirmed, Deaths, Recovered, Active, New_cases, New_deaths, New_recovered)
+            VALUES 
+            ('Coronavirus', 'Afghanistan', 36263, 1269, 25198, 9796, 106, 10, 18),
+            ('Monkeypox', 'Africa', 1612, 19, -1, -1, 112, 5, -1),
+            ('Coronavirus', 'Albania', 4880, 144, 2745, 1991, 117, 6, 63),
+            ('Coronavirus', 'Algeria', 27973, 1163, 18837, 7973, 616, 8, 749),
+            ('Monkeypox', 'Andorra', 4, 0, -1, -1, 2, 0, -1)
         ''')
     conn.commit()
     conn.close()
@@ -104,12 +120,4 @@ def update_diseases(df):
 
 if __name__ == "__main__":
     initialize_db()
-    
-    diseases = get_diseases()
-    print(diseases)
-    
-    json_df = '[{"Nom":"COVID-19","Country_Region":"USA","Confirmed":5000000,"Deaths":150000,"Recovered":2500000,"Active":2350000,"New_cases":50000,"New_deaths":1000,"New_recovered":20000},{"Nom":"Ebola","Country_Region":"Congo","Confirmed":3000,"Deaths":2000,"Recovered":800,"Active":200,"New_cases":50,"New_deaths":20,"New_recovered":30},{"Nom":"SARS","Country_Region":"China","Confirmed":8000,"Deaths":774,"Recovered":7000,"Active":226,"New_cases":100,"New_deaths":10,"New_recovered":50},{"Nom":"MERS","Country_Region":"Saudi Arabia","Confirmed":2600,"Deaths":858,"Recovered":1400,"Active":242,"New_cases":20,"New_deaths":5,"New_recovered":10}]'
-    update_diseases(json_df)
-    
-    diseases = get_diseases()
-    print("\n\n\nUpdated Diseases:", diseases)
+    populate_disease_table()
