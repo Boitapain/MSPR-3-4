@@ -3,7 +3,7 @@
     "configurations": [
         {
             "name": "Launch Flask API",
-            "type": "debugpy",
+            "type": "python",
             "request": "launch",
             "module": "flask",
             "env": {
@@ -16,11 +16,10 @@
                 "--no-reload"
             ],
             "jinja": true,
-            "autoStartBrowser": false
         },
         {
             "name": "Launch Streamlit App",
-            "type": "debugpy",
+            "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/.venv/bin/streamlit",
             "args": [

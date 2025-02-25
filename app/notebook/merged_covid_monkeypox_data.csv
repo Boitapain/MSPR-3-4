@@ -1,0 +1,306 @@
+Id,Nom,Location,Confirmed,Deaths,Recovered,Active,New cases,New deaths,New recovered
+1,Coronavirus,Afghanistan,36263.0,1269.0,25198,9796,106.0,10.0,18
+2,Monkeypox,Africa,1612.0,19.0,-1,-1,112.0,5.0,-1
+3,Coronavirus,Albania,4880.0,144.0,2745,1991,117.0,6.0,63
+4,Coronavirus,Algeria,27973.0,1163.0,18837,7973,616.0,8.0,749
+5,Monkeypox,Andorra,4.0,0.0,-1,-1,2.0,0.0,-1
+6,Coronavirus,Andorra,907.0,52.0,803,52,10.0,0.0,0
+7,Coronavirus,Angola,950.0,41.0,242,667,18.0,1.0,0
+8,Coronavirus,Antigua and Barbuda,86.0,3.0,65,18,4.0,0.0,5
+9,Coronavirus,Argentina,167416.0,3059.0,72575,91782,4890.0,120.0,2057
+10,Monkeypox,Argentina,1129.0,2.0,-1,-1,96.0,1.0,-1
+11,Coronavirus,Armenia,37390.0,711.0,26665,10014,73.0,6.0,187
+12,Monkeypox,Aruba,3.0,0.0,-1,-1,1.0,0.0,-1
+13,Monkeypox,Asia,673.0,1.0,-1,-1,26.0,1.0,-1
+14,Coronavirus,Australia,15303.0,167.0,9311,5825,368.0,6.0,137
+15,Monkeypox,Australia,145.0,0.0,-1,-1,18.0,0.0,-1
+16,Monkeypox,Austria,328.0,0.0,-1,-1,25.0,0.0,-1
+17,Coronavirus,Austria,20558.0,713.0,18246,1599,86.0,1.0,37
+18,Coronavirus,Azerbaijan,30446.0,423.0,23242,6781,396.0,6.0,558
+19,Coronavirus,Bahamas,382.0,11.0,91,280,40.0,0.0,0
+20,Monkeypox,Bahamas,2.0,0.0,-1,-1,1.0,0.0,-1
+21,Monkeypox,Bahrain,2.0,0.0,-1,-1,1.0,0.0,-1
+22,Coronavirus,Bahrain,39482.0,141.0,36110,3231,351.0,1.0,421
+23,Coronavirus,Bangladesh,226225.0,2965.0,125683,97577,2772.0,37.0,1801
+24,Monkeypox,Barbados,1.0,0.0,-1,-1,1.0,0.0,-1
+25,Coronavirus,Barbados,110.0,7.0,94,9,0.0,0.0,0
+26,Coronavirus,Belarus,67251.0,538.0,60492,6221,119.0,4.0,67
+27,Monkeypox,Belgium,793.0,2.0,-1,-1,89.0,1.0,-1
+28,Coronavirus,Belgium,66428.0,9822.0,17452,39154,402.0,1.0,14
+29,Coronavirus,Belize,48.0,2.0,26,20,0.0,0.0,0
+30,Coronavirus,Benin,1770.0,35.0,1036,699,0.0,0.0,0
+31,Monkeypox,Benin,3.0,0.0,-1,-1,3.0,0.0,-1
+32,Monkeypox,Bermuda,1.0,0.0,-1,-1,1.0,0.0,-1
+33,Coronavirus,Bhutan,99.0,0.0,86,13,4.0,0.0,1
+34,Coronavirus,Bolivia,71181.0,2647.0,21478,47056,1752.0,64.0,309
+35,Monkeypox,Bolivia,265.0,0.0,-1,-1,16.0,0.0,-1
+36,Monkeypox,Bosnia and Herzegovina,9.0,0.0,-1,-1,3.0,0.0,-1
+37,Coronavirus,Bosnia and Herzegovina,10498.0,294.0,4930,5274,731.0,14.0,375
+38,Coronavirus,Botswana,739.0,2.0,63,674,53.0,1.0,11
+39,Monkeypox,Brazil,10920.0,16.0,-1,-1,410.0,2.0,-1
+40,Coronavirus,Brazil,2442375.0,87618.0,1846641,508116,23284.0,614.0,33728
+41,Coronavirus,Brunei,141.0,3.0,138,0,0.0,0.0,0
+42,Monkeypox,Bulgaria,6.0,0.0,-1,-1,2.0,0.0,-1
+43,Coronavirus,Bulgaria,10621.0,347.0,5585,4689,194.0,7.0,230
+44,Coronavirus,Burkina Faso,1100.0,53.0,926,121,14.0,0.0,6
+45,Coronavirus,Burma,350.0,6.0,292,52,0.0,0.0,2
+46,Coronavirus,Burundi,378.0,1.0,301,76,17.0,0.0,22
+47,Coronavirus,Cabo Verde,2328.0,22.0,1550,756,21.0,0.0,103
+48,Coronavirus,Cambodia,226.0,0.0,147,79,1.0,0.0,4
+49,Monkeypox,Cameroon,18.0,3.0,-1,-1,4.0,2.0,-1
+50,Coronavirus,Cameroon,17110.0,391.0,14539,2180,402.0,6.0,0
+51,Coronavirus,Canada,116458.0,8944.0,0,107514,682.0,11.0,0
+52,Monkeypox,Canada,1484.0,0.0,-1,-1,102.0,0.0,-1
+53,Monkeypox,Central African Republic,28.0,1.0,-1,-1,3.0,1.0,-1
+54,Coronavirus,Central African Republic,4599.0,59.0,1546,2994,0.0,0.0,0
+55,Coronavirus,Chad,922.0,75.0,810,37,7.0,0.0,0
+56,Monkeypox,Chile,1441.0,2.0,-1,-1,111.0,1.0,-1
+57,Coronavirus,Chile,347923.0,9187.0,319954,18782,2133.0,75.0,1859
+58,Monkeypox,China,71.0,0.0,-1,-1,15.0,0.0,-1
+59,Coronavirus,China,86783.0,4656.0,78869,3258,213.0,4.0,7
+60,Coronavirus,Colombia,257101.0,8777.0,131161,117163,16306.0,508.0,11494
+61,Monkeypox,Colombia,4090.0,0.0,-1,-1,411.0,0.0,-1
+62,Coronavirus,Comoros,354.0,7.0,328,19,0.0,0.0,0
+63,Monkeypox,Congo,5.0,0.0,-1,-1,2.0,0.0,-1
+64,Coronavirus,Congo (Brazzaville),3200.0,54.0,829,2317,162.0,3.0,73
+65,Coronavirus,Congo (Kinshasa),8844.0,208.0,5700,2936,13.0,4.0,190
+66,Monkeypox,Costa Rica,221.0,0.0,-1,-1,49.0,0.0,-1
+67,Coronavirus,Costa Rica,15841.0,115.0,3824,11902,612.0,11.0,88
+68,Coronavirus,Cote d'Ivoire,15655.0,96.0,10361,5198,59.0,0.0,183
+69,Monkeypox,Croatia,33.0,0.0,-1,-1,5.0,0.0,-1
+70,Coronavirus,Croatia,4881.0,139.0,3936,806,24.0,3.0,70
+71,Monkeypox,Cuba,8.0,1.0,-1,-1,4.0,1.0,-1
+72,Coronavirus,Cuba,2532.0,87.0,2351,94,37.0,0.0,2
+73,Monkeypox,Curacao,3.0,0.0,-1,-1,1.0,0.0,-1
+74,Monkeypox,Cyprus,5.0,0.0,-1,-1,2.0,0.0,-1
+75,Coronavirus,Cyprus,1060.0,19.0,852,189,3.0,0.0,0
+76,Monkeypox,Czechia,71.0,1.0,-1,-1,6.0,1.0,-1
+77,Coronavirus,Czechia,15516.0,373.0,11428,3715,192.0,2.0,0
+78,Monkeypox,Democratic Republic of Congo,556.0,0.0,-1,-1,90.0,0.0,-1
+79,Monkeypox,Denmark,196.0,0.0,-1,-1,18.0,0.0,-1
+80,Coronavirus,Denmark,13761.0,613.0,12605,543,109.0,0.0,77
+81,Coronavirus,Djibouti,5059.0,58.0,4977,24,9.0,0.0,11
+82,Coronavirus,Dominica,18.0,0.0,18,0,0.0,0.0,0
+83,Monkeypox,Dominican Republic,52.0,0.0,-1,-1,21.0,0.0,-1
+84,Coronavirus,Dominican Republic,64156.0,1083.0,30204,32869,1248.0,20.0,1601
+85,Monkeypox,Ecuador,533.0,3.0,-1,-1,95.0,2.0,-1
+86,Coronavirus,Ecuador,81161.0,5532.0,34896,40733,467.0,17.0,0
+87,Monkeypox,Egypt,3.0,0.0,-1,-1,1.0,0.0,-1
+88,Coronavirus,Egypt,92482.0,4652.0,34838,52992,420.0,46.0,1007
+89,Coronavirus,El Salvador,15035.0,408.0,7778,6849,405.0,8.0,130
+90,Monkeypox,El Salvador,104.0,0.0,-1,-1,19.0,0.0,-1
+91,Coronavirus,Equatorial Guinea,3071.0,51.0,842,2178,0.0,0.0,0
+92,Coronavirus,Eritrea,265.0,0.0,191,74,2.0,0.0,2
+93,Monkeypox,Estonia,11.0,0.0,-1,-1,2.0,0.0,-1
+94,Coronavirus,Estonia,2034.0,69.0,1923,42,0.0,0.0,1
+95,Coronavirus,Eswatini,2316.0,34.0,1025,1257,109.0,2.0,39
+96,Coronavirus,Ethiopia,14547.0,228.0,6386,7933,579.0,5.0,170
+97,Monkeypox,Europe,25609.0,6.0,-1,-1,1140.0,2.0,-1
+98,Coronavirus,Fiji,27.0,0.0,18,9,0.0,0.0,0
+99,Coronavirus,Finland,7398.0,329.0,6920,149,5.0,0.0,0
+100,Monkeypox,Finland,42.0,0.0,-1,-1,7.0,0.0,-1
+101,Coronavirus,France,220352.0,30212.0,81212,108928,2551.0,17.0,267
+102,Monkeypox,France,4146.0,0.0,-1,-1,541.0,0.0,-1
+103,Coronavirus,Gabon,7189.0,49.0,4682,2458,205.0,0.0,219
+104,Coronavirus,Gambia,326.0,8.0,66,252,49.0,2.0,6
+105,Coronavirus,Georgia,1137.0,16.0,922,199,6.0,0.0,2
+106,Monkeypox,Georgia,2.0,0.0,-1,-1,1.0,0.0,-1
+107,Coronavirus,Germany,207112.0,9125.0,190314,7673,445.0,1.0,259
+108,Monkeypox,Germany,3691.0,0.0,-1,-1,174.0,0.0,-1
+109,Coronavirus,Ghana,33624.0,168.0,29801,3655,655.0,0.0,307
+110,Monkeypox,Ghana,124.0,4.0,-1,-1,14.0,3.0,-1
+111,Monkeypox,Gibraltar,6.0,0.0,-1,-1,3.0,0.0,-1
+112,Monkeypox,Greece,88.0,0.0,-1,-1,8.0,0.0,-1
+113,Coronavirus,Greece,4227.0,202.0,1374,2651,34.0,0.0,0
+114,Monkeypox,Greenland,2.0,0.0,-1,-1,2.0,0.0,-1
+115,Coronavirus,Greenland,14.0,0.0,13,1,1.0,0.0,0
+116,Coronavirus,Grenada,23.0,0.0,23,0,0.0,0.0,0
+117,Monkeypox,Guadeloupe,1.0,0.0,-1,-1,1.0,0.0,-1
+118,Monkeypox,Guam,1.0,0.0,-1,-1,1.0,0.0,-1
+119,Monkeypox,Guatemala,404.0,1.0,-1,-1,31.0,1.0,-1
+120,Coronavirus,Guatemala,45309.0,1761.0,32455,11093,256.0,27.0,843
+121,Coronavirus,Guinea,7055.0,45.0,6257,753,47.0,2.0,105
+122,Coronavirus,Guinea-Bissau,1954.0,26.0,803,1125,0.0,0.0,0
+123,Coronavirus,Guyana,389.0,20.0,181,188,19.0,0.0,0
+124,Monkeypox,Guyana,2.0,0.0,-1,-1,1.0,0.0,-1
+125,Coronavirus,Haiti,7340.0,158.0,4365,2817,25.0,1.0,0
+126,Coronavirus,Holy See,12.0,0.0,12,0,0.0,0.0,0
+127,Coronavirus,Honduras,39741.0,1166.0,5039,33536,465.0,50.0,117
+128,Monkeypox,Honduras,42.0,0.0,-1,-1,6.0,0.0,-1
+129,Monkeypox,Hungary,80.0,0.0,-1,-1,6.0,0.0,-1
+130,Coronavirus,Hungary,4448.0,596.0,3329,523,13.0,0.0,0
+131,Monkeypox,Iceland,16.0,0.0,-1,-1,3.0,0.0,-1
+132,Coronavirus,Iceland,1854.0,10.0,1823,21,7.0,0.0,0
+133,Monkeypox,India,22.0,1.0,-1,-1,5.0,1.0,-1
+134,Coronavirus,India,1480073.0,33408.0,951166,495499,44457.0,637.0,33598
+135,Coronavirus,Indonesia,100303.0,4838.0,58173,37292,1525.0,57.0,1518
+136,Monkeypox,Indonesia,1.0,0.0,-1,-1,1.0,0.0,-1
+137,Coronavirus,Iran,293606.0,15912.0,255144,22550,2434.0,212.0,1931
+138,Monkeypox,Iran,1.0,0.0,-1,-1,1.0,0.0,-1
+139,Coronavirus,Iraq,112585.0,4458.0,77144,30983,2553.0,96.0,1927
+140,Monkeypox,Ireland,229.0,0.0,-1,-1,16.0,0.0,-1
+141,Coronavirus,Ireland,25892.0,1764.0,23364,764,11.0,0.0,0
+142,Coronavirus,Israel,63985.0,474.0,27133,36378,2029.0,4.0,108
+143,Monkeypox,Israel,262.0,0.0,-1,-1,25.0,0.0,-1
+144,Monkeypox,Italy,957.0,0.0,-1,-1,54.0,0.0,-1
+145,Coronavirus,Italy,246286.0,35112.0,198593,12581,168.0,5.0,147
+146,Monkeypox,Jamaica,21.0,0.0,-1,-1,2.0,0.0,-1
+147,Coronavirus,Jamaica,853.0,10.0,714,129,11.0,0.0,0
+148,Coronavirus,Japan,31142.0,998.0,21970,8174,594.0,0.0,364
+149,Monkeypox,Japan,127.0,0.0,-1,-1,17.0,0.0,-1
+150,Monkeypox,Jordan,1.0,0.0,-1,-1,1.0,0.0,-1
+151,Coronavirus,Jordan,1176.0,11.0,1041,124,8.0,0.0,0
+152,Coronavirus,Kazakhstan,84648.0,585.0,54404,29659,1526.0,0.0,1833
+153,Coronavirus,Kenya,17975.0,285.0,7833,9857,372.0,5.0,90
+154,Coronavirus,Kosovo,7413.0,185.0,4027,3201,496.0,16.0,274
+155,Coronavirus,Kuwait,64379.0,438.0,55057,8884,606.0,5.0,684
+156,Coronavirus,Kyrgyzstan,33296.0,1301.0,21205,10790,483.0,24.0,817
+157,Coronavirus,Laos,20.0,0.0,19,1,0.0,0.0,0
+158,Coronavirus,Latvia,1219.0,31.0,1045,143,0.0,0.0,0
+159,Monkeypox,Latvia,6.0,0.0,-1,-1,1.0,0.0,-1
+160,Coronavirus,Lebanon,3882.0,51.0,1709,2122,132.0,0.0,17
+161,Monkeypox,Lebanon,27.0,0.0,-1,-1,6.0,0.0,-1
+162,Coronavirus,Lesotho,505.0,12.0,128,365,0.0,0.0,0
+163,Monkeypox,Liberia,12.0,0.0,-1,-1,2.0,0.0,-1
+164,Coronavirus,Liberia,1167.0,72.0,646,449,5.0,0.0,5
+165,Coronavirus,Libya,2827.0,64.0,577,2186,158.0,4.0,24
+166,Coronavirus,Liechtenstein,86.0,1.0,81,4,0.0,0.0,0
+167,Coronavirus,Lithuania,2019.0,80.0,1620,319,11.0,0.0,4
+168,Monkeypox,Lithuania,5.0,0.0,-1,-1,2.0,0.0,-1
+169,Coronavirus,Luxembourg,6321.0,112.0,4825,1384,49.0,0.0,178
+170,Monkeypox,Luxembourg,57.0,0.0,-1,-1,5.0,0.0,-1
+171,Coronavirus,Madagascar,9690.0,91.0,6260,3339,395.0,6.0,681
+172,Coronavirus,Malawi,3664.0,99.0,1645,1920,24.0,0.0,6
+173,Coronavirus,Malaysia,8904.0,124.0,8601,179,7.0,0.0,1
+174,Coronavirus,Maldives,3369.0,15.0,2547,807,67.0,0.0,19
+175,Coronavirus,Mali,2513.0,124.0,1913,476,3.0,1.0,2
+176,Coronavirus,Malta,701.0,9.0,665,27,1.0,0.0,0
+177,Monkeypox,Malta,34.0,0.0,-1,-1,8.0,0.0,-1
+178,Monkeypox,Martinique,7.0,0.0,-1,-1,6.0,0.0,-1
+179,Coronavirus,Mauritania,6208.0,156.0,4653,1399,37.0,0.0,223
+180,Coronavirus,Mauritius,344.0,10.0,332,2,0.0,0.0,0
+181,Monkeypox,Mexico,4010.0,26.0,-1,-1,341.0,12.0,-1
+182,Coronavirus,Mexico,395489.0,44022.0,303810,47657,4973.0,342.0,8588
+183,Monkeypox,Moldova,2.0,0.0,-1,-1,1.0,0.0,-1
+184,Coronavirus,Moldova,23154.0,748.0,16154,6252,120.0,13.0,245
+185,Monkeypox,Monaco,3.0,0.0,-1,-1,3.0,0.0,-1
+186,Coronavirus,Monaco,116.0,4.0,104,8,0.0,0.0,0
+187,Coronavirus,Mongolia,289.0,0.0,222,67,1.0,0.0,4
+188,Coronavirus,Montenegro,2893.0,45.0,809,2039,94.0,2.0,70
+189,Monkeypox,Montenegro,2.0,0.0,-1,-1,1.0,0.0,-1
+190,Coronavirus,Morocco,20887.0,316.0,16553,4018,609.0,3.0,115
+191,Monkeypox,Morocco,3.0,0.0,-1,-1,2.0,0.0,-1
+192,Monkeypox,Mozambique,1.0,1.0,-1,-1,1.0,1.0,-1
+193,Coronavirus,Mozambique,1701.0,11.0,0,1690,32.0,0.0,0
+194,Coronavirus,Namibia,1843.0,8.0,101,1734,68.0,0.0,26
+195,Coronavirus,Nepal,18752.0,48.0,13754,4950,139.0,3.0,626
+196,Coronavirus,Netherlands,53413.0,6160.0,189,47064,419.0,1.0,0
+197,Monkeypox,Netherlands,1264.0,0.0,-1,-1,107.0,0.0,-1
+198,Monkeypox,New Caledonia,1.0,0.0,-1,-1,1.0,0.0,-1
+199,Coronavirus,New Zealand,1557.0,22.0,1514,21,1.0,0.0,1
+200,Monkeypox,New Zealand,41.0,0.0,-1,-1,12.0,0.0,-1
+201,Coronavirus,Nicaragua,3439.0,108.0,2492,839,0.0,0.0,0
+202,Coronavirus,Niger,1132.0,69.0,1027,36,0.0,0.0,0
+203,Coronavirus,Nigeria,41180.0,860.0,18203,22117,648.0,2.0,829
+204,Monkeypox,Nigeria,835.0,9.0,-1,-1,56.0,2.0,-1
+205,Monkeypox,North America,36958.0,71.0,-1,-1,1482.0,12.0,-1
+206,Coronavirus,North Macedonia,10213.0,466.0,5564,4183,127.0,6.0,137
+207,Monkeypox,Norway,95.0,0.0,-1,-1,11.0,0.0,-1
+208,Coronavirus,Norway,9132.0,255.0,8752,125,15.0,0.0,0
+209,Monkeypox,Oceania,188.0,0.0,-1,-1,18.0,0.0,-1
+210,Coronavirus,Oman,77058.0,393.0,57028,19637,1053.0,9.0,1729
+211,Monkeypox,Pakistan,2.0,0.0,-1,-1,1.0,0.0,-1
+212,Coronavirus,Pakistan,274289.0,5842.0,241026,27421,1176.0,20.0,3592
+213,Monkeypox,Panama,226.0,1.0,-1,-1,27.0,1.0,-1
+214,Coronavirus,Panama,61442.0,1322.0,35086,25034,1146.0,28.0,955
+215,Coronavirus,Papua New Guinea,62.0,0.0,11,51,0.0,0.0,0
+216,Monkeypox,Paraguay,125.0,0.0,-1,-1,11.0,0.0,-1
+217,Coronavirus,Paraguay,4548.0,43.0,2905,1600,104.0,2.0,111
+218,Monkeypox,Peru,3800.0,20.0,-1,-1,191.0,5.0,-1
+219,Coronavirus,Peru,389717.0,18418.0,272547,98752,13756.0,575.0,4697
+220,Monkeypox,Philippines,4.0,0.0,-1,-1,2.0,0.0,-1
+221,Coronavirus,Philippines,82040.0,1945.0,26446,53649,1592.0,13.0,336
+222,Monkeypox,Poland,217.0,0.0,-1,-1,13.0,0.0,-1
+223,Coronavirus,Poland,43402.0,1676.0,32856,8870,337.0,5.0,103
+224,Monkeypox,Portugal,953.0,0.0,-1,-1,77.0,0.0,-1
+225,Coronavirus,Portugal,50299.0,1719.0,35375,13205,135.0,2.0,158
+226,Monkeypox,Puerto Rico,211.0,0.0,-1,-1,15.0,0.0,-1
+227,Coronavirus,Qatar,109597.0,165.0,106328,3104,292.0,0.0,304
+228,Monkeypox,Qatar,5.0,0.0,-1,-1,1.0,0.0,-1
+229,Coronavirus,Romania,45902.0,2206.0,25794,17902,1104.0,19.0,151
+230,Monkeypox,Romania,47.0,0.0,-1,-1,3.0,0.0,-1
+231,Coronavirus,Russia,816680.0,13334.0,602249,201097,5607.0,85.0,3077
+232,Monkeypox,Russia,2.0,0.0,-1,-1,1.0,0.0,-1
+233,Coronavirus,Rwanda,1879.0,5.0,975,899,58.0,0.0,57
+234,Coronavirus,Saint Kitts and Nevis,17.0,0.0,15,2,0.0,0.0,0
+235,Coronavirus,Saint Lucia,24.0,0.0,22,2,0.0,0.0,0
+236,Monkeypox,Saint Martin (French part),1.0,0.0,-1,-1,1.0,0.0,-1
+237,Coronavirus,Saint Vincent and the Grenadines,52.0,0.0,39,13,0.0,0.0,0
+238,Coronavirus,San Marino,699.0,42.0,657,0,0.0,0.0,0
+239,Monkeypox,San Marino,1.0,0.0,-1,-1,1.0,0.0,-1
+240,Coronavirus,Sao Tome and Principe,865.0,14.0,734,117,2.0,0.0,38
+241,Coronavirus,Saudi Arabia,268934.0,2760.0,222936,43238,1993.0,27.0,2613
+242,Monkeypox,Saudi Arabia,8.0,0.0,-1,-1,1.0,0.0,-1
+243,Coronavirus,Senegal,9764.0,194.0,6477,3093,83.0,3.0,68
+244,Coronavirus,Serbia,24141.0,543.0,0,23598,411.0,9.0,0
+245,Monkeypox,Serbia,40.0,0.0,-1,-1,13.0,0.0,-1
+246,Coronavirus,Seychelles,114.0,0.0,39,75,0.0,0.0,0
+247,Coronavirus,Sierra Leone,1783.0,66.0,1317,400,0.0,0.0,4
+248,Coronavirus,Singapore,50838.0,27.0,45692,5119,469.0,0.0,171
+249,Monkeypox,Singapore,25.0,0.0,-1,-1,3.0,0.0,-1
+250,Monkeypox,Slovakia,14.0,0.0,-1,-1,3.0,0.0,-1
+251,Coronavirus,Slovakia,2181.0,28.0,1616,537,2.0,0.0,39
+252,Monkeypox,Slovenia,47.0,0.0,-1,-1,5.0,0.0,-1
+253,Coronavirus,Slovenia,2087.0,116.0,1733,238,5.0,0.0,55
+254,Coronavirus,Somalia,3196.0,93.0,1543,1560,18.0,0.0,22
+255,Monkeypox,South Africa,5.0,0.0,-1,-1,1.0,0.0,-1
+256,Coronavirus,South Africa,452529.0,7067.0,274925,170537,7096.0,298.0,9848
+257,Monkeypox,South America,22336.0,43.0,-1,-1,662.0,5.0,-1
+258,Monkeypox,South Korea,60.0,0.0,-1,-1,13.0,0.0,-1
+259,Coronavirus,South Korea,14203.0,300.0,13007,896,28.0,1.0,102
+260,Coronavirus,South Sudan,2305.0,46.0,1175,1084,43.0,1.0,0
+261,Coronavirus,Spain,272421.0,28432.0,150376,93613,0.0,0.0,0
+262,Monkeypox,Spain,7551.0,3.0,-1,-1,560.0,2.0,-1
+263,Coronavirus,Sri Lanka,2805.0,11.0,2121,673,23.0,0.0,15
+264,Monkeypox,Sri Lanka,2.0,0.0,-1,-1,1.0,0.0,-1
+265,Monkeypox,Sudan,19.0,1.0,-1,-1,10.0,1.0,-1
+266,Coronavirus,Sudan,11424.0,720.0,5939,4765,39.0,3.0,49
+267,Coronavirus,Suriname,1483.0,24.0,925,534,44.0,1.0,35
+268,Monkeypox,Sweden,260.0,0.0,-1,-1,15.0,0.0,-1
+269,Coronavirus,Sweden,79395.0,5700.0,0,73695,398.0,3.0,0
+270,Monkeypox,Switzerland,552.0,0.0,-1,-1,26.0,0.0,-1
+271,Coronavirus,Switzerland,34477.0,1978.0,30900,1599,65.0,1.0,200
+272,Coronavirus,Syria,674.0,40.0,0,634,24.0,2.0,0
+273,Coronavirus,Taiwan*,462.0,7.0,440,15,4.0,0.0,0
+274,Coronavirus,Tajikistan,7235.0,60.0,6028,1147,43.0,1.0,58
+275,Coronavirus,Tanzania,509.0,21.0,183,305,0.0,0.0,0
+276,Coronavirus,Thailand,3297.0,58.0,3111,128,6.0,0.0,2
+277,Monkeypox,Thailand,21.0,0.0,-1,-1,3.0,0.0,-1
+278,Coronavirus,Timor-Leste,24.0,0.0,0,24,0.0,0.0,0
+279,Coronavirus,Togo,874.0,18.0,607,249,6.0,0.0,8
+280,Coronavirus,Trinidad and Tobago,148.0,8.0,128,12,1.0,0.0,0
+281,Coronavirus,Tunisia,1455.0,50.0,1157,248,3.0,0.0,15
+282,Monkeypox,Turkey,12.0,0.0,-1,-1,11.0,0.0,-1
+283,Coronavirus,Turkey,227019.0,5630.0,210469,10920,919.0,17.0,982
+284,Coronavirus,US,4290259.0,148011.0,1325804,2816444,56336.0,1076.0,27941
+285,Coronavirus,Uganda,1128.0,2.0,986,140,13.0,0.0,4
+286,Monkeypox,Ukraine,5.0,0.0,-1,-1,1.0,0.0,-1
+287,Coronavirus,Ukraine,67096.0,1636.0,37202,28258,835.0,11.0,317
+288,Monkeypox,United Arab Emirates,16.0,0.0,-1,-1,5.0,0.0,-1
+289,Coronavirus,United Arab Emirates,59177.0,345.0,52510,6322,264.0,1.0,328
+290,Coronavirus,United Kingdom,301708.0,45844.0,1437,254427,688.0,7.0,3
+291,Monkeypox,United Kingdom,3741.0,0.0,-1,-1,259.0,0.0,-1
+292,Monkeypox,United States,30154.0,42.0,-1,-1,1392.0,6.0,-1
+293,Monkeypox,Uruguay,19.0,0.0,-1,-1,3.0,0.0,-1
+294,Coronavirus,Uruguay,1202.0,35.0,951,216,10.0,1.0,3
+295,Coronavirus,Uzbekistan,21209.0,121.0,11674,9414,678.0,5.0,569
+296,Coronavirus,Venezuela,15988.0,146.0,9959,5883,525.0,4.0,213
+297,Monkeypox,Venezuela,12.0,0.0,-1,-1,3.0,0.0,-1
+298,Coronavirus,Vietnam,431.0,0.0,365,66,11.0,0.0,0
+299,Monkeypox,Vietnam,2.0,0.0,-1,-1,1.0,0.0,-1
+300,Coronavirus,West Bank and Gaza,10621.0,78.0,3752,6791,152.0,2.0,0
+301,Coronavirus,Western Sahara,10.0,1.0,8,1,0.0,0.0,0
+302,Monkeypox,World,87376.0,140.0,-1,-1,1802.0,12.0,-1
+303,Coronavirus,Yemen,1691.0,483.0,833,375,10.0,4.0,36
+304,Coronavirus,Zambia,4552.0,140.0,2815,1597,71.0,1.0,465
+305,Coronavirus,Zimbabwe,2704.0,36.0,542,2126,192.0,2.0,24
