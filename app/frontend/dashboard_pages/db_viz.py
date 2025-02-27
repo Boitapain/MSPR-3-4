@@ -32,7 +32,7 @@ def db_viz(user):
             )
             if st.button("Update database"):
                 data_json = diseases_edited.to_json(orient="records")
-                response = requests.post("http://127.0.0.1:5000/update_diseases_route", json={"diseases": data_json}, headers={"Content-Type": "application/json"})
+                response = requests.put("http://127.0.0.1:5000/update_diseases_route", json={"diseases": data_json}, headers={"Content-Type": "application/json"})
                 if response.status_code == 200:
                     my_bar = st.progress(0, text="Updating database...")
 
