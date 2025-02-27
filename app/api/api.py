@@ -4,6 +4,7 @@ from db import add_user, get_users, authenticate_user, get_diseases, update_dise
 import os
 from io import StringIO
 import pandas as pd
+import logging
 
 app = Flask(__name__)
 
@@ -71,7 +72,10 @@ def diseases():
     except Exception as e:
         return jsonify({"message": str(e)}), 500
 
-@app.route('/update_diseases_route', methods=['POST'])
+logging.basicConfig(level=logging.DEBUG)
+app.logger.setLevel(logging.DEBUG)
+
+@app.route('/update_diseases_route', methods=['PUT'])
 def update_diseases_route():
     data = request.get_json()
     df = data.get('diseases')
@@ -81,6 +85,8 @@ def update_diseases_route():
     if pd.read_json(StringIO(df)).isnull().values.any():
         return jsonify({"message": "Data contains null values"}), 400
     
+    app.logger.debug("hello")
+    app.logger.debug(pd.read_json(StringIO(df)).head())
     try:
         update_diseases(df)
         return jsonify({"message": "Diseases updated successfully"}), 200

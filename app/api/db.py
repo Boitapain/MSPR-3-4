@@ -111,8 +111,7 @@ def update_diseases(df):
     df = pd.read_json(StringIO(df))
 
 # Check if 'Id' column exists, if not, generate IDs
-    if 'Id' not in df.columns:
-        df['Id'] = range(1, len(df) + 1)
+    df['Id'] = range(1, len(df) + 1)
 
     df.to_sql('Disease', conn, if_exists='replace', index=False)
     conn.commit()
