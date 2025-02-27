@@ -17,14 +17,24 @@ def stats(user):
         ])
     
         if not df.empty:
-            # User selection for statistics
+            # User selection for disease and statistics
+            disease_options = ["All"] + df["Nom"].unique().tolist()
+            selected_disease = st.selectbox("Select the disease to display", disease_options)
+            
+            if selected_disease != "All":
+                df = df[df["Nom"] == selected_disease]
+            
             stat_options = [
                 "Total Confirmed Cases by Country",
                 "Total Deaths by Country",
                 "Total Recovered by Country",
                 "New Cases by Country",
                 "New Deaths by Country",
-                "New Recovered by Country"
+                "New Recovered by Country",
+                "Confirmed vs Deaths Scatter Plot",
+                "Recovered Cases Pie Chart",
+                "Confirmed Cases Line Chart",
+                "Deaths Area Chart"
             ]
             selected_stat = st.selectbox("Select the statistic to display", stat_options)
             
@@ -40,6 +50,14 @@ def stats(user):
                 fig = px.bar(df, x='Country_Region', y='New_deaths', color='Nom', title='New Deaths by Country')
             elif selected_stat == "New Recovered by Country":
                 fig = px.bar(df, x='Country_Region', y='New_recovered', color='Nom', title='New Recovered by Country')
+            elif selected_stat == "Confirmed vs Deaths Scatter Plot":
+                fig = px.scatter(df, x='Confirmed', y='Deaths', color='Country_Region', title='Confirmed vs Deaths Scatter Plot')
+            elif selected_stat == "Recovered Cases Pie Chart":
+                fig = px.pie(df, names='Country_Region', values='Recovered', title='Recovered Cases Pie Chart')
+            elif selected_stat == "Confirmed Cases Line Chart":
+                fig = px.line(df, x='Country_Region', y='Confirmed', color='Nom', title='Confirmed Cases Line Chart')
+            elif selected_stat == "Deaths Area Chart":
+                fig = px.area(df, x='Country_Region', y='Deaths', color='Nom', title='Deaths Area Chart')
             
             st.plotly_chart(fig)
         else:
