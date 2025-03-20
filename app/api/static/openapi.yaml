@@ -136,7 +136,7 @@ paths:
           description: Internal server error
 
   /update_diseases_route:
-    post:
+    put:
       summary: Update diseases
       requestBody:
         required: true
