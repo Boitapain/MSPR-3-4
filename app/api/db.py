@@ -45,10 +45,8 @@ def populate_disease_table():
             INSERT INTO Disease (Nom, Country_Region, Confirmed, Deaths, Recovered, Active, New_cases, New_deaths, New_recovered)
             VALUES 
             ('Coronavirus', 'Afghanistan', 36263, 1269, 25198, 9796, 106, 10, 18),
-            ('Monkeypox', 'Africa', 1612, 19, -1, -1, 112, 5, -1),
             ('Coronavirus', 'Albania', 4880, 144, 2745, 1991, 117, 6, 63),
-            ('Coronavirus', 'Algeria', 27973, 1163, 18837, 7973, 616, 8, 749),
-            ('Monkeypox', 'Andorra', 4, 0, -1, -1, 2, 0, -1)
+            ('Coronavirus', 'Algeria', 27973, 1163, 18837, 7973, 616, 8, 749)
         ''')
     conn.commit()
     conn.close()
@@ -95,7 +93,6 @@ def get_users():
     return [{"id": user[0], "name": user[1], "email": user[2], "isAdmin": user[3]} for user in users]
 
 ############### Disease functions ###############
-
 def get_diseases():
     """Retrieve all diseases from the database."""
     conn = create_connection()

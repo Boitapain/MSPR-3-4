@@ -49,9 +49,10 @@ def dashboard(user):
         st.divider()
         
         # CSV Import button
-        st.button("CSV Import", type="tertiary", icon=":material/download:", on_click=lambda: st.session_state.update({"dashboard_page": "csv_import"}))
-        
-        st.divider()
+        if user["isAdmin"]:
+            st.button("CSV Import", type="tertiary", icon=":material/download:", on_click=lambda: st.session_state.update({"dashboard_page": "csv_import"}))
+            
+            st.divider()
         
         # Database Visualization button
         st.button("Database", type="tertiary", icon=":material/database:", on_click=lambda: st.session_state.update({"dashboard_page": "database"}))
