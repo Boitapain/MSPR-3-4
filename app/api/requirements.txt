@@ -1,3 +1,6 @@
 pandas==2.2.3
 flask==3.1.0
 flask-swagger-ui==3.25.0
+pytest
+pytest-flask
+bcrypt
