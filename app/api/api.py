@@ -86,6 +86,8 @@ def update_diseases_route():
         return jsonify({"message": "Diseases updated successfully"}), 200
     except Exception as e:
         return jsonify({"message": str(e)}), 500
-
+    
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000)
+    import os
+    port = int(os.environ.get("PORT", 5000))  # Use Render's port or default to 5000
+    app.run(host='0.0.0.0', port=port)
