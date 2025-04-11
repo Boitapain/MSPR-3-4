@@ -1,5 +1,8 @@
 import streamlit as st
 import requests
+import os
+
+api_url = os.getenv('API_URL', 'http://127.0.0.1:5000') 
 
 def create_account():
     st.markdown("<h1 style='text-align: center;'>Disease track 🦠</h1>", unsafe_allow_html=True)
@@ -23,7 +26,7 @@ def create_account():
                 st.error("All fields are required")
             else:
                 if password == confirm_password:
-                    response = requests.post("http://127.0.0.1:5000/register", json={
+                    response = requests.post("f{api_url}/register", json={
                         "name": name,
                         "email": email,
                         "password": password

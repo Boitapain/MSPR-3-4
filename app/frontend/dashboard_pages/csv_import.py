@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
 import requests
-import time
+import os
+
+api_url = os.getenv('API_URL', 'http://127.0.0.1:5000') 
 
 def csv_import(user):
     st.markdown(f"<h3 style='text-align: center;'>CSV Import ↧</h3>", unsafe_allow_html=True)
@@ -20,7 +22,7 @@ def csv_import(user):
                     json_data = df.to_json(orient='records')
                     
                     # Send the JSON data to the backend API
-                    response = requests.put("http://127.0.0.1:5000/update_diseases_route", json={"diseases": json_data})
+                    response = requests.put("f{api_url}/update_diseases_route", json={"diseases": json_data})
                     
                     if response.status_code == 200:
                         st.success("CSV imported successfully!")

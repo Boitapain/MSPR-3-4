@@ -1,5 +1,8 @@
 import streamlit as st
 import requests
+import os
+
+api_url = os.getenv('API_URL', 'http://127.0.0.1:5000') 
 
 def login():
     st.markdown("<h1 style='text-align: center;'>Disease track 🦠</h1>", unsafe_allow_html=True)
@@ -12,7 +15,7 @@ def login():
     
     with col1:
         if st.button("Login", key="login_button", type="primary", icon=":material/login:"):
-            response = requests.post("http://127.0.0.1:5000/login", json={"email": email, "password": password}, headers={"Content-Type": "application/json"})
+            response = requests.post("f{api_url}/login", json={"email": email, "password": password}, headers={"Content-Type": "application/json"})
             if response.status_code == 200:
                 user = response.json().get("user")
                 st.session_state['user'] = user

@@ -2,12 +2,15 @@ import streamlit as st
 import pandas as pd
 import requests
 import plotly.express as px
+import os
+
+api_url = os.getenv('API_URL', 'http://127.0.0.1:5000') 
 
 def stats(user):
     st.markdown("<h3 style='text-align: center;'>Disease Statistics</h3>", unsafe_allow_html=True)
     
     try:
-        response = requests.get("http://127.0.0.1:5000/diseases")
+        response = requests.get("f{api_url}/diseases")
         response.raise_for_status()  
         # Get data from the response or session state
         data = response.json().get("diseases")
