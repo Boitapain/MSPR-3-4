@@ -3,9 +3,10 @@ import bcrypt
 import pandas as pd
 from io import StringIO
 
+# filepath: /workspaces/MSPR-3-4/app/api/db.py
 def create_connection():
     """Create a database connection and return the connection object."""
-    return sqlite3.connect('app/disease_track.db')
+    return sqlite3.connect('../disease_track.db')  
 
 def initialize_db():
     """Initialize the database with the required tables."""
