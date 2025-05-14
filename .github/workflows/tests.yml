@@ -35,4 +35,4 @@ jobs:
     - name: Run tests
       run: |
         source .venv/bin/activate
-        PYTHONPATH=$(pwd) pytest tests/test_create_account.py tests/test_login.py
+        PYTHONPATH=$(pwd) pytest tests/test_api.py
