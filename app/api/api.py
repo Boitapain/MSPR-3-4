@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_swagger_ui import get_swaggerui_blueprint
-from db import add_user, get_users, authenticate_user, get_diseases, update_diseases, initialize_db
+from .db import add_user, get_users, authenticate_user, get_diseases, update_diseases, initialize_db
 import os
 from io import StringIO
 import pandas as pd
