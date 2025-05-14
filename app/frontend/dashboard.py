@@ -10,61 +10,52 @@ def dashboard(user):
     if 'dashboard_page' not in st.session_state:
         st.session_state['dashboard_page'] = 'home'
 
-    # Custom CSS for styling
-    st.markdown("""
+    st.markdown(
+    """
     <style>
-        h1 {
-            text-shadow: 2px 2px 6px rgba(168, 168, 168, 1);
-        }
-        [data-testid=stSidebar] {
-            background-color: #6EE7B7;
-        }
-        .stButton button{
-                display: flex;  
-                margin: 10px auto;
-        }
-        .stButton button:hover{
-                color:black;
-                transition: 0.5s;
-                transform: scale(1.1);
-        }
-        .stButton button span {
-            font-size: 2.5rem;
-            margin-right: 20px;
-            text-align: center;
-            text-shadow: 2px 2px 6px rgba(100, 100, 100, 1);
-        }
-        .stButton button div {
-            font-size: 1.25rem;
-            text-align: center;
-        }
+    /* Customize the sidebar container */
+    [data-testid="stSidebar"] {
+        background-color: #D1D5DB !important;
+        width: fit-content !important; /* Use a fixed width for consistency */
+    }
+
+    /* Customize text inside the sidebar */
+    [data-testid="stSidebar"] span {
+        font-weight: bold; /* Optional: Make the text bold */
+    }               
+
     </style>
-    """, unsafe_allow_html=True)
-    
+    """,
+    unsafe_allow_html=True
+)
     # Sidebar with navigation buttons
     with st.sidebar:
+        st.markdown("""
+        <h1>Disease Track<img style="width:40px;" src='https://mspr-team.gitbook.io/~gitbook/image?url=https%3A%2F%2F4141789323-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Forganizations%252Fu9WT6puw9kHCPITtWSCY%252Fsites%252Fsite_dWsRi%252Ficon%252FSHNWRyAl3InsU3QGPMP5%252FCoronavirus.png%3Falt%3Dmedia%26token%3Dd44d9f14-0f59-49c2-8fe0-3c80809684b8&width=32&dpr=2&quality=100&sign=e351430e&sv=2'/></h1>
+        """,unsafe_allow_html=True)
         # Home button
         st.button("Home", type="tertiary", icon=":material/home:", on_click=lambda: st.session_state.update({"dashboard_page": "home"}))
-        
-        st.divider()
-        
+        st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
+
+
+
         # CSV Import button
+        st.header("Data Management")
         if user["isAdmin"]:
             st.button("CSV Import", type="tertiary", icon=":material/download:", on_click=lambda: st.session_state.update({"dashboard_page": "csv_import"}))
-            
-            st.divider()
         
         # Database Visualization button
         st.button("Database", type="tertiary", icon=":material/database:", on_click=lambda: st.session_state.update({"dashboard_page": "database"}))
-
-        st.divider()
+        st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
         
+        st.header("Data Visualization")
         # Database Visualization button
         st.button("Statistics", type="tertiary", icon=":material/monitoring:", on_click=lambda: st.session_state.update({"dashboard_page": "statistics"}))
+        st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
         
-        st.divider()
         
         # Settings button
+        st.header("Settings")
         st.button("Profile", type="tertiary", icon=":material/person:", on_click=lambda: st.session_state.update({"dashboard_page": "profile"}))
     
     # Display the appropriate page based on session state

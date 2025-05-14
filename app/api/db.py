@@ -3,9 +3,10 @@ import bcrypt
 import pandas as pd
 from io import StringIO
 
+# filepath: /workspaces/MSPR-3-4/app/api/db.py
 def create_connection():
     """Create a database connection and return the connection object."""
-    return sqlite3.connect('app/disease_track.db')
+    return sqlite3.connect('app/disease_track.db')  
 
 def initialize_db():
     """Initialize the database with the required tables."""
@@ -23,12 +24,12 @@ def initialize_db():
         conn.execute('''
             CREATE TABLE IF NOT EXISTS Disease (
                 Id INTEGER PRIMARY KEY,
-                Nom TEXT NOT NULL,
-                Country_Region TEXT NOT NULL,
+                Name TEXT NOT NULL,
+                Date DATE NOT NULL,
+                Country TEXT NOT NULL,
                 Confirmed INT NOT NULL,
                 Deaths INT NOT NULL,
                 Recovered INT NOT NULL,
-                Active INT NOT NULL,
                 New_cases INT NOT NULL,
                 New_deaths INT NOT NULL,
                 New_recovered INT NOT NULL
@@ -42,11 +43,11 @@ def populate_disease_table():
     conn = create_connection()
     with conn:
         conn.execute('''
-            INSERT INTO Disease (Nom, Country_Region, Confirmed, Deaths, Recovered, Active, New_cases, New_deaths, New_recovered)
+            INSERT INTO Disease (Name, Date, Country, Confirmed, Deaths, Recovered, New_cases, New_deaths, New_recovered)
             VALUES 
-            ('Coronavirus', 'Afghanistan', 36263, 1269, 25198, 9796, 106, 10, 18),
-            ('Coronavirus', 'Albania', 4880, 144, 2745, 1991, 117, 6, 63),
-            ('Coronavirus', 'Algeria', 27973, 1163, 18837, 7973, 616, 8, 749)
+            (COVID-19,22/1/2020,Afghanistan,0,0,0,0,0,0),
+            (COVID-19,22/1/2020,Albania,0,0,0,0,0,0),
+            (COVID-19,22/1/2020,Algeria,0,0,0,0,0,0)
         ''')
     conn.commit()
     conn.close()
@@ -116,4 +117,4 @@ def update_diseases(df):
 
 if __name__ == "__main__":
     initialize_db()
-    populate_disease_table()
+    # populate_disease_table()

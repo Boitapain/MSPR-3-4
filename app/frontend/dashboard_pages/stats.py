@@ -14,59 +14,78 @@ def stats(user):
         response.raise_for_status()  
         # Get data from the response or session state
         data = response.json().get("diseases")
+        if not data:
+            st.warning("No data available to display")
+            return
+        
+        # Convert data to a DataFrame
         df = pd.DataFrame(data, columns=[
-            "Id", "Nom", "Country_Region", "Confirmed", "Deaths", "Recovered", 
-            "Active", "New_cases", "New_deaths", "New_recovered"
+            "Id", "Name", "Date", "Country", "Confirmed", "Deaths", "Recovered", 
+            "New_cases", "New_deaths", "New_recovered"
         ])
-    
+        
         if not df.empty:
-            # User selection for disease and statistics
-            disease_options = ["All"] + df["Nom"].unique().tolist()
+            # Convert the "Date" column to datetime for filtering
+            df["Date"] = pd.to_datetime(df["Date"])
+            
+            # Extract year and month for grouping
+            df["YearMonth"] = df["Date"].dt.to_period("M")
+            
+            # Get the unique months available in the dataset
+            months = sorted(df["YearMonth"].unique())  # Ensure months are sorted
+            
+            # Create a list of consecutive month pairs
+            month_pairs = [(months[i], months[i + 1]) for i in range(len(months) - 1)]
+            
+            # Use st.columns to place date range and statistic selection side by side
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                # User input for selecting a range of consecutive months
+                selected_pair = st.selectbox(
+                    "Select a consecutive month range",
+                    options=month_pairs,
+                    format_func=lambda x: f"{x[0]} to {x[1]}"
+                )
+            
+            with col2:
+                # User selection for the statistic to display
+                stat_options = ["Confirmed", "Deaths", "Recovered", "New_cases", "New_deaths", "New_recovered"]
+                selected_stat = st.selectbox("Select the statistic to display", stat_options)
+            
+            # Filter the DataFrame based on the selected month range
+            start_month, end_month = selected_pair
+            df = df[(df["YearMonth"] >= start_month) & (df["YearMonth"] <= end_month)]
+            
+            if df.empty:
+                st.warning("No data available for the selected month range")
+                return
+            
+            # User selection for disease
+            disease_options = ["All"] + df["Name"].unique().tolist()
             selected_disease = st.selectbox("Select the disease to display", disease_options)
             
             if selected_disease != "All":
-                df = df[df["Nom"] == selected_disease]
+                df = df[df["Name"] == selected_disease]
             
-            stat_options = [
-                "Total Confirmed Cases by Country",
-                "Total Deaths by Country",
-                "Total Recovered by Country",
-                "New Cases by Country",
-                "New Deaths by Country",
-                "New Recovered by Country",
-                "Confirmed vs Deaths Scatter Plot",
-                "Recovered Cases Pie Chart",
-                "Confirmed Cases Line Chart",
-                "Deaths Area Chart"
-            ]
-            selected_stat = st.selectbox("Select the statistic to display", stat_options)
-            
-            if selected_stat == "Total Confirmed Cases by Country":
-                fig = px.bar(df, x='Country_Region', y='Confirmed', color='Nom', title='Total Confirmed Cases by Country')
-            elif selected_stat == "Total Deaths by Country":
-                fig = px.bar(df, x='Country_Region', y='Deaths', color='Nom', title='Total Deaths by Country')
-            elif selected_stat == "Total Recovered by Country":
-                fig = px.bar(df, x='Country_Region', y='Recovered', color='Nom', title='Total Recovered by Country')
-            elif selected_stat == "New Cases by Country":
-                fig = px.bar(df, x='Country_Region', y='New_cases', color='Nom', title='New Cases by Country')
-            elif selected_stat == "New Deaths by Country":
-                fig = px.bar(df, x='Country_Region', y='New_deaths', color='Nom', title='New Deaths by Country')
-            elif selected_stat == "New Recovered by Country":
-                fig = px.bar(df, x='Country_Region', y='New_recovered', color='Nom', title='New Recovered by Country')
-            elif selected_stat == "Confirmed vs Deaths Scatter Plot":
-                fig = px.scatter(df, x='Confirmed', y='Deaths', color='Country_Region', title='Confirmed vs Deaths Scatter Plot')
-            elif selected_stat == "Recovered Cases Pie Chart":
-                fig = px.pie(df, names='Country_Region', values='Recovered', title='Recovered Cases Pie Chart')
-            elif selected_stat == "Confirmed Cases Line Chart":
-                fig = px.line(df, x='Country_Region', y='Confirmed', color='Nom', title='Confirmed Cases Line Chart')
-            elif selected_stat == "Deaths Area Chart":
-                fig = px.area(df, x='Country_Region', y='Deaths', color='Nom', title='Deaths Area Chart')
-            
+            # Display a choropleth map
+            fig = px.choropleth(
+                df,
+                locations="Country",  # Column with country names
+                locationmode="country names",  # Match country names
+                color=selected_stat,  # Column to determine color intensity
+                hover_name="Country",  # Column to display on hover
+                title=f"Disease Spread by Country ({selected_stat})",
+                color_continuous_scale=[[0, "#FFFFFF"], [1, "#6EE7B7"]]  # Shades of #6EE7B7
+            )
+            fig.update_layout(geo=dict(showframe=False, showcoastlines=True, projection_type="natural earth"))
             st.plotly_chart(fig)
         else:
             st.warning("No data available to display")
     except requests.exceptions.RequestException as e:
-        st.error(f"No data available, please upload data inside the database.")
+        st.error(f"Failed to fetch data from the API: {e}")
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
 
 if __name__ == "__main__":
     stats(None)
