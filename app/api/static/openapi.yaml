@@ -9,7 +9,7 @@ paths:
     get:
       summary: Get all users
       responses:
-        '200':
+        "200":
           description: A list of users
           content:
             application/json:
@@ -29,9 +29,9 @@ paths:
                           type: string
                         isAdmin:
                           type: boolean
-        '404':
+        "404":
           description: No users found
-        '500':
+        "500":
           description: Internal server error
 
   /register:
@@ -51,11 +51,11 @@ paths:
                 password:
                   type: string
       responses:
-        '201':
+        "201":
           description: User registered successfully
-        '400':
+        "400":
           description: All fields are required
-        '500':
+        "500":
           description: Internal server error
 
   /login:
@@ -73,7 +73,7 @@ paths:
                 password:
                   type: string
       responses:
-        '200':
+        "200":
           description: User logged in successfully
           content:
             application/json:
@@ -91,14 +91,14 @@ paths:
                         type: string
                       isAdmin:
                         type: boolean
-        '401':
+        "401":
           description: Invalid email or password
 
   /diseases:
     get:
       summary: Get all diseases
       responses:
-        '200':
+        "200":
           description: A list of diseases
           content:
             application/json:
@@ -130,9 +130,9 @@ paths:
                           type: integer
                         New_recovered:
                           type: integer
-        '404':
+        "404":
           description: No diseases found
-        '500':
+        "500":
           description: Internal server error
 
   /update_diseases_route:
@@ -171,9 +171,48 @@ paths:
                       New_recovered:
                         type: integer
       responses:
-        '200':
+        "200":
           description: Diseases updated successfully
-        '400':
+        "400":
           description: No data provided or data contains null values
-        '500':
+        "500":
+          description: Internal server error
+
+  /predict:
+    post:
+      summary: Predict disease progression
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cases:
+                  type: integer
+                  description: Number of confirmed cases (lag 1)
+                deaths:
+                  type: integer
+                  description: Number of deaths (lag 1)
+                recovered:
+                  type: integer
+                  description: Number of recovered cases (lag 1)
+                country:
+                  type: integer
+                  description: Encoded country value
+      responses:
+        "200":
+          description: Prediction result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  prediction:
+                    type: array
+                    items:
+                      type: number
+        "400":
+          description: No data provided
+        "500":
           description: Internal server error
