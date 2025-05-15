@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  api:
+    build: ./app/api
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./app/api:/app
+      - ./app/disease_track.db:/app/disease_track.db
+    restart: unless-stopped
+
+  frontend:
+    build: ./app/frontend
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./app/frontend:/app
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  notebook:
+    build: ./app/notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./app/notebook:/app
+    restart: unless-stopped
