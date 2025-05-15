@@ -1,9 +1,11 @@
-from flask import Flask, request, jsonify, send_from_directory
-from flask_swagger_ui import get_swaggerui_blueprint
-from .db import add_user, get_users, authenticate_user, get_diseases, update_diseases, initialize_db
 import os
 from io import StringIO
 import pandas as pd
+import pickle
+from flask import Flask, request, jsonify, send_from_directory
+from flask_swagger_ui import get_swaggerui_blueprint
+from db import add_user, get_users, authenticate_user, get_diseases, update_diseases, initialize_db
+
 
 app = Flask(__name__)
 
@@ -84,6 +86,27 @@ def update_diseases_route():
     try:
         update_diseases(df)
         return jsonify({"message": "Diseases updated successfully"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.get_json()
+    model_path = os.path.join(os.path.dirname(__file__), 'model.pkl')
+    
+    if not data:
+        return jsonify({"message": "No data provided"}), 400
+    
+    try:
+        model = pickle.load(open(model_path, 'rb'))
+        input_df = pd.DataFrame([{
+            "Confirmed_lag1": data["cases"],
+            "Deaths_lag1": data["deaths"],
+            "Recovered_lag1": data["recovered"],
+            "Country_encoded": data["country"]
+        }])
+        prediction = model.predict(input_df)
+        return jsonify({"prediction": prediction.tolist()}), 200
     except Exception as e:
         return jsonify({"message": str(e)}), 500
 

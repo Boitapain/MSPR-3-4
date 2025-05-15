@@ -4,6 +4,7 @@ from dashboard_pages.csv_import import csv_import
 from dashboard_pages.db_viz import db_viz
 from dashboard_pages.stats import stats
 from dashboard_pages.profile import profile
+from dashboard_pages.predictions import predictions
 
 def dashboard(user):
     # Initialize session state for dashboard page if it doesn't exist
@@ -38,19 +39,16 @@ def dashboard(user):
         st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
 
 
-
         # CSV Import button
         st.header("Data Management")
         if user["isAdmin"]:
             st.button("CSV Import", type="tertiary", icon=":material/download:", on_click=lambda: st.session_state.update({"dashboard_page": "csv_import"}))
-        
-        # Database Visualization button
         st.button("Database", type="tertiary", icon=":material/database:", on_click=lambda: st.session_state.update({"dashboard_page": "database"}))
         st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
         
         st.header("Data Visualization")
-        # Database Visualization button
         st.button("Statistics", type="tertiary", icon=":material/monitoring:", on_click=lambda: st.session_state.update({"dashboard_page": "statistics"}))
+        st.button("AI Predictions", type="tertiary", icon=":material/rocket_launch:", on_click=lambda: st.session_state.update({"dashboard_page": "predictions"}))
         st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
         
         
@@ -69,5 +67,7 @@ def dashboard(user):
         stats(user)
     elif st.session_state['dashboard_page'] == 'profile':
         profile(user)
+    elif st.session_state['dashboard_page'] == 'predictions':
+        predictions(user)
 if __name__ == "__main__":
     dashboard("User")
