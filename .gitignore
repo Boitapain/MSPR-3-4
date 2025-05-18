@@ -14,6 +14,7 @@ app/disease_track.db
 app/api/
 app/frontend/
 app/notebook/
+app/disease_track.db
 app/notebook/data_etl_output.csv
 
 .vscode
