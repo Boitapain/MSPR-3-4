@@ -8,7 +8,7 @@ def stats(user):
     
     try:
         # Fetch data from the API
-        response = requests.get("http://127.0.0.1:5000/diseases")
+        response = requests.get("http://api:5000/diseases")
         response.raise_for_status()
         
         # Parse the response data

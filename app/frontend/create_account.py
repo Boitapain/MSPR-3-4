@@ -23,7 +23,7 @@ def create_account():
                 st.error("All fields are required")
             else:
                 if password == confirm_password:
-                    response = requests.post("http://127.0.0.1:5000/register", json={
+                    response = requests.post("http://api:5000/register", json={
                         "name": name,
                         "email": email,
                         "password": password

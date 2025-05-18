@@ -9,7 +9,7 @@ def predictions(user):
         st.session_state.pop("predicted")
         st.rerun()
     
-    df = pd.read_csv("app/notebook/data_etl_output.csv")
+    df = pd.read_csv("data_etl_output.csv")
     countries = sorted(df['Country'].unique())
     from sklearn.preprocessing import LabelEncoder
     le = LabelEncoder()
@@ -47,7 +47,7 @@ def predictions(user):
             for i in range(1, 101, 10):
                 time.sleep(0.03)
                 progress.progress(i)
-            response = requests.post("http://127.0.0.1:5000/predict", json={
+            response = requests.post("http://api:5000/predict", json={
                 "cases": st.session_state.cases,
                 "deaths": st.session_state.deaths,
                 "recovered": st.session_state.recovered,

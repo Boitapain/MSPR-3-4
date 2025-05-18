@@ -10,6 +10,12 @@ app/.pytest_cache/
 app/frontend/__pycache__/
 app/disease_track.db
 
+# Ignore Docker volumes
+app/api/
+app/frontend/
+app/notebook/
+app/notebook/data_etl_output.csv
+
 .vscode
 
 .requirements.txt

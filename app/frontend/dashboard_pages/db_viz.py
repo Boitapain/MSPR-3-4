@@ -11,7 +11,7 @@ def db_viz(user):
         st.rerun()
     
     try:
-        response = requests.get("http://127.0.0.1:5000/diseases")
+        response = requests.get("http://api:5000/diseases")
         response.raise_for_status()  
         # Get data from the response or session state
         data = response.json().get("diseases")
@@ -32,7 +32,7 @@ def db_viz(user):
             )
             if st.button("Update database"):
                 data_json = diseases_edited.to_json(orient="records")
-                response = requests.put("http://127.0.0.1:5000/update_diseases_route", json={"diseases": data_json}, headers={"Content-Type": "application/json"})
+                response = requests.put("http://api:5000/update_diseases_route", json={"diseases": data_json}, headers={"Content-Type": "application/json"})
                 if response.status_code == 200:
                     my_bar = st.progress(0, text="Updating database...")
 
