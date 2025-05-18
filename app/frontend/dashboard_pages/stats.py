@@ -10,9 +10,11 @@ def stats(user):
     st.markdown("<h3 style='text-align: center;'>Disease Statistics</h3>", unsafe_allow_html=True)
     
     try:
-        response = requests.get(f"{api_url}/diseases")
-        response.raise_for_status()  
-        # Get data from the response or session state
+        # Fetch data from the API
+        response = requests.get("http://api:5000/diseases")
+        response.raise_for_status()
+        
+        # Parse the response data
         data = response.json().get("diseases")
         if not data:
             st.warning("No data available to display")

@@ -22,7 +22,7 @@ def csv_import(user):
                     json_data = df.to_json(orient='records')
                     
                     # Send the JSON data to the backend API
-                    response = requests.put("f{api_url}/update_diseases_route", json={"diseases": json_data})
+                    response = requests.put("http://api:5000/update_diseases_route", json={"diseases": json_data})
                     
                     if response.status_code == 200:
                         st.success("CSV imported successfully!")
