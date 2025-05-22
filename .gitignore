@@ -16,6 +16,7 @@ app/frontend/
 app/notebook/
 app/disease_track.db
 app/notebook/data_etl_output.csv
+app/notebook/model.pkl
 
 .vscode
 
