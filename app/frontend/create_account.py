@@ -5,7 +5,7 @@ import os
 api_url = os.getenv('API_URL', 'http://127.0.0.1:5000') 
 
 def create_account():
-    st.markdown("<h1 style='text-align: center;'>Disease track 🦠</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>Disease track</h1>", unsafe_allow_html=True)
     st.subheader("Create Account")
     
     name = st.text_input("Name")

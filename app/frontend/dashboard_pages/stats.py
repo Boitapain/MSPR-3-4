@@ -78,7 +78,7 @@ def stats(user):
                 color=selected_stat,  # Column to determine color intensity
                 hover_name="Country",  # Column to display on hover
                 title=f"Disease Spread by Country ({selected_stat})",
-                color_continuous_scale=[[0, "#FFFFFF"], [1, "#6EE7B7"]]  # Shades of #6EE7B7
+                color_continuous_scale=[[0, "#FFFFFF"], [1, "#FF4D00"]]  # Shades of #FF4D00
             )
             fig.update_layout(geo=dict(showframe=False, showcoastlines=True, projection_type="natural earth"))
             st.plotly_chart(fig)
