@@ -32,7 +32,7 @@ def dashboard(user):
     # Sidebar with navigation buttons
     with st.sidebar:
         st.markdown("""
-        <h1>Disease Track<img style="width:40px;" src='https://mspr-team.gitbook.io/~gitbook/image?url=https%3A%2F%2F4141789323-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Forganizations%252Fu9WT6puw9kHCPITtWSCY%252Fsites%252Fsite_dWsRi%252Ficon%252FSHNWRyAl3InsU3QGPMP5%252FCoronavirus.png%3Falt%3Dmedia%26token%3Dd44d9f14-0f59-49c2-8fe0-3c80809684b8&width=32&dpr=2&quality=100&sign=e351430e&sv=2'/></h1>
+        <h1>Disease Track<img style="width:40px;" src='https://open.gitbook.com/~gitbook/image?url=https%3A%2F%2F4141789323-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Forganizations%252Fu9WT6puw9kHCPITtWSCY%252Fsites%252Fsite_dWsRi%252Ficon%252FbWVB6Yfwt8HDjQZq3ceg%252FChanger%2520Couleurs%2520PNG.png%3Falt%3Dmedia%26token%3D1b09cb73-feab-4508-9750-82cc96920a70&width=48&height=48&sign=d8eb1004&sv=2'/></h1>
         """,unsafe_allow_html=True)
         # Home button
         st.button("Home", type="tertiary", icon=":material/home:", on_click=lambda: st.session_state.update({"dashboard_page": "home"}))
