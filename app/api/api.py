@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 from flask import Flask, request, jsonify, send_from_directory
 from flask_swagger_ui import get_swaggerui_blueprint
-from db import add_user, get_users, authenticate_user, get_diseases, update_diseases, initialize_db
+from db import add_user, get_users, authenticate_user, get_diseases, update_diseases, initialize_db, update_users as db_update_users
 
 
 app = Flask(__name__)
@@ -49,6 +49,22 @@ def register():
     try:
         add_user(name, email, password)
         return jsonify({"message": "User registered successfully"}), 201
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+    
+
+@app.route('/update_users', methods=['PUT'])
+def update_users_route():
+    data = request.get_json()
+    df = data.get('users')
+    
+    if df is None or not df:
+        return jsonify({"message": "No data provided"}), 400
+    if pd.read_json(StringIO(df)).isnull().values.any():
+        return jsonify({"message": "Data contains null values"}), 400
+    try:
+        db_update_users(df)
+        return jsonify({"message": "Users updated successfully"}), 200
     except Exception as e:
         return jsonify({"message": str(e)}), 500
 

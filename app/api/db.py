@@ -93,6 +93,38 @@ def get_users():
     conn.close()
     return [{"id": user[0], "name": user[1], "email": user[2], "isAdmin": user[3]} for user in users]
 
+def update_users(df):
+    """Safely update users in the database without overwriting the table."""
+    import bcrypt
+    conn = create_connection()
+    df = pd.read_json(StringIO(df))
+
+    # Fetch current users to preserve old passwords
+    current_users = pd.read_sql_query("SELECT id, password FROM users", conn)
+    password_map = dict(zip(current_users['id'], current_users['password']))
+
+    for idx, row in df.iterrows():
+        user_id = row['id']
+        name = row.get('name', '')
+        email = row.get('email', '')
+        is_admin = row.get('isAdmin', 0)
+        if user_id in password_map:
+            # Existing user: update fields, keep old password
+            conn.execute(
+                "UPDATE users SET name=?, email=?, isAdmin=? WHERE id=?",
+                (name, email, is_admin, user_id)
+            )
+        else:
+            # New user: insert with default password "123" (hashed)
+            hashed = bcrypt.hashpw("123".encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+            conn.execute(
+                "INSERT INTO users (name, email, password, isAdmin) VALUES (?, ?, ?, ?)",
+                (name, email, hashed, is_admin)
+            )
+
+    conn.commit()
+    conn.close()
+
 ############### Disease functions ###############
 def get_diseases():
     """Retrieve all diseases from the database."""
