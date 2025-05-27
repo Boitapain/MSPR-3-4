@@ -116,7 +116,7 @@ def update_users(df):
             )
         else:
             # New user: insert with default password "123" (hashed)
-            hashed = bcrypt.hashpw("123".encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+            hashed = bcrypt.hashpw("123".encode('utf-8'), bcrypt.gensalt())
             conn.execute(
                 "INSERT INTO users (name, email, password, isAdmin) VALUES (?, ?, ?, ?)",
                 (name, email, hashed, is_admin)
@@ -124,6 +124,21 @@ def update_users(df):
 
     conn.commit()
     conn.close()
+
+def update_user_password(email, old_password, new_password):
+    """Update the password for the currently logged-in user."""
+    user = get_user(email)
+    if user and bcrypt.checkpw(old_password.encode('utf-8'), user[3]):
+        hashed_new_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
+        conn = create_connection()
+        with conn:
+            conn.execute('''
+                UPDATE users SET password = ? WHERE email = ?
+            ''', (hashed_new_password, email))
+        conn.commit()
+        conn.close()
+        return True
+    return False
 
 ############### Disease functions ###############
 def get_diseases():

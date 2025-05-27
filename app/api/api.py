@@ -67,6 +67,27 @@ def update_users_route():
         return jsonify({"message": "Users updated successfully"}), 200
     except Exception as e:
         return jsonify({"message": str(e)}), 500
+    
+@app.route('/update_password', methods=['POST'])
+def update_password():
+    data = request.get_json()
+    email = data.get('email')
+    old_password = data.get('old_password')
+    new_password = data.get('new_password')
+    confirm_password = data.get('confirm_password')
+
+    if not email or not old_password or not new_password or not confirm_password:
+        return jsonify({"message": "Tous les champs sont requis."}), 400
+
+    if new_password != confirm_password:
+        return jsonify({"message": "Les nouveaux mots de passe ne correspondent pas."}), 400
+
+    from db import update_user_password
+    success = update_user_password(email, old_password, new_password)
+    if success:
+        return jsonify({"message": "Mot de passe mis à jour avec succès."}), 200
+    else:
+        return jsonify({"message": "Ancien mot de passe incorrect."}), 401
 
 @app.route('/login', methods=['POST'])
 def login():

@@ -20,6 +20,10 @@ def manage_users(user):
             "id", "name", "email", "isAdmin"
         ])
 
+        #remove currently logged in user from the list
+        if user and user.get("id") in users_df["id"].values:
+            users_df = users_df[users_df["id"] != user["id"]]
+        # Remove columns that are completely empty
         users_df = users_df.dropna(axis=1, how='all')
 
         # Center the data editor and button
