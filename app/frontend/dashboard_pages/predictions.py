@@ -47,7 +47,7 @@ def predictions(user):
             for i in range(1, 101, 10):
                 time.sleep(0.03)
                 progress.progress(i)
-            response = requests.post("http://api:5000/predict", json={
+            response = requests.post(f"{st.session_state['API_URL']}/predict", json={
                 "cases": st.session_state.cases,
                 "deaths": st.session_state.deaths,
                 "recovered": st.session_state.recovered,
