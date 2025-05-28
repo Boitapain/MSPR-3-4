@@ -15,6 +15,7 @@ app/notebook/data_etl_output.csv
 app/notebook/model.pkl
 app/api/disease_track.db
 
+
 .vscode
 
 .requirements.txt

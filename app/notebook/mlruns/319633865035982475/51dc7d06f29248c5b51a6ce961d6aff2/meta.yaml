@@ -1,0 +1,15 @@
+artifact_uri: file:///app/mlruns/319633865035982475/51dc7d06f29248c5b51a6ce961d6aff2/artifacts
+end_time: 1748467908719
+entry_point_name: ''
+experiment_id: '319633865035982475'
+lifecycle_stage: active
+run_id: 51dc7d06f29248c5b51a6ce961d6aff2
+run_name: Global_Visualizations
+run_uuid: 51dc7d06f29248c5b51a6ce961d6aff2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748467907873
+status: 3
+tags: []
+user_id: root
