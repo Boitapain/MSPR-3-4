@@ -18,6 +18,7 @@ def initialize_db():
                 name TEXT NOT NULL,
                 email TEXT NOT NULL UNIQUE,
                 password TEXT NOT NULL,
+                country TEXT NOT NULL DEFAULT 'USA',
                 isAdmin BOOLEAN NOT NULL DEFAULT 0
             );
         ''')
@@ -55,15 +56,15 @@ def populate_disease_table():
 
 ############### User functions ###############
 
-def add_user(name, email, password, is_admin=False):
+def add_user(name, email, password, country='USA', is_admin=False):
     """Add a new user to the database."""
     conn = create_connection()
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
     with conn:
         conn.execute('''
-            INSERT INTO users (name, email, password, isAdmin)
-            VALUES (?, ?, ?, ?)
-        ''', (name, email, hashed_password, is_admin))
+            INSERT INTO users (name, email, password, country, isAdmin)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (name, email, hashed_password, country, is_admin))
     conn.commit()
     conn.close()
 
@@ -81,21 +82,20 @@ def authenticate_user(email, password):
     """Authenticate a user by email and password."""
     user = get_user(email)
     if user and bcrypt.checkpw(password.encode('utf-8'), user[3]):
-        return {"id": user[0], "name": user[1], "email": user[2], "isAdmin": user[4]}
+        return {"id": user[0], "name": user[1], "email": user[2], "country": user[4], "isAdmin": user[5]}
     return None
 
 def get_users():
     """Retrieve all users from the database."""
     conn = create_connection()
     users = conn.execute('''
-        SELECT id, name, email, isAdmin FROM users;
+        SELECT id, name, email, country, isAdmin FROM users;
     ''').fetchall()
     conn.close()
-    return [{"id": user[0], "name": user[1], "email": user[2], "isAdmin": user[3]} for user in users]
+    return [{"id": user[0], "name": user[1], "email": user[2], "country": user[3], "isAdmin": user[4]} for user in users]
 
 def update_users(df):
     """Safely update users in the database without overwriting the table."""
-    import bcrypt
     conn = create_connection()
     df = pd.read_json(StringIO(df))
 
@@ -107,20 +107,23 @@ def update_users(df):
         user_id = row['id']
         name = row.get('name', '')
         email = row.get('email', '')
+        country = row.get('country', 'USA')
         is_admin = row.get('isAdmin', 0)
+
+        if country is not ['USA', 'Suisse', 'France']:
+            country = 'USA'  # Default to USA if invalid country
+        
         if user_id in password_map:
             # Existing user: update fields, keep old password
             conn.execute(
-                "UPDATE users SET name=?, email=?, isAdmin=? WHERE id=?",
-                (name, email, is_admin, user_id)
+                "UPDATE users SET name=?, email=?, country=?, isAdmin=? WHERE id=?",
+                (name, email, country, is_admin, user_id, )
             )
+            print(f"Updated user {user_id} with name: {name}, email: {email}, country: {country}, isAdmin: {is_admin}")
+            conn.commit()
         else:
-            # New user: insert with default password "123" (hashed)
-            hashed = bcrypt.hashpw("123".encode('utf-8'), bcrypt.gensalt())
-            conn.execute(
-                "INSERT INTO users (name, email, password, isAdmin) VALUES (?, ?, ?, ?)",
-                (name, email, hashed, is_admin)
-            )
+            print(f"Adding new user {user_id} with name: {name}, email: {email}, country: {country}, isAdmin: {is_admin}")
+            add_user(name, email, "123", country, is_admin)
 
     conn.commit()
     conn.close()

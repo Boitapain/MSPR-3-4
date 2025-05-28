@@ -7,6 +7,7 @@ def create_account():
     
     name = st.text_input("Name")
     email = st.text_input("Email")
+    country = st.selectbox("Country", ["USA", "France", "Suisse"])
     password = st.text_input("Password", type="password")
     confirm_password = st.text_input("Confirm Password", type="password")
     
@@ -26,7 +27,8 @@ def create_account():
                     response = requests.post("http://api:5000/register", json={
                         "name": name,
                         "email": email,
-                        "password": password
+                        "password": password,
+                        "country": country,  # Default country, can be changed later
                     })
                     if response.status_code == 201:
                         st.success("Account created successfully!")
