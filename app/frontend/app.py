@@ -2,11 +2,19 @@ import streamlit as st
 from login import login
 from create_account import create_account
 from dashboard import dashboard
+import os
 
 def navigate_to_create_account():
     st.session_state["page"] = "create_account"
 
 def main():
+    if os.getenv('RENDER'):
+        # Production (Render) environment
+        API_URL = 'https://backend-l0n0.onrender.com'
+    else:
+        # Local development with docker-compose
+        API_URL = 'http://api:5000'
+
     # Initialize session state variables if they don't exist
     if 'new_user' not in st.session_state:
         st.session_state['new_user'] = False

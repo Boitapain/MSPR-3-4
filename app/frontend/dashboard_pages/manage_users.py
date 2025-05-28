@@ -11,7 +11,7 @@ def manage_users(user):
         st.rerun()
 
     try:
-        response = requests.get("http://api:5000/users")
+        response = requests.get(f"{st.session_state['API_URL']}/users")
         response.raise_for_status()
         data = response.json().get("users")
         users = pd.DataFrame(data, columns=[

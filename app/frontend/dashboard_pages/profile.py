@@ -23,7 +23,7 @@ def profile(user):
                 st.error("New password and confirm password do not match.")
             else:
                 response = requests.post(
-                    "http://api:5000/update_password",
+                    f"{st.session_state['API_URL']}/update_password",
                     json={
                         "email": user["email"],
                         "old_password": old_password,
