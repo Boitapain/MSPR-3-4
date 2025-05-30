@@ -2,12 +2,14 @@ import streamlit as st
 import pandas as pd
 import requests
 import time
-import os
-
-api_url = os.getenv('API_URL', 'http://127.0.0.1:5000') 
+from translations import load_translations
 
 def db_viz(user):
-    st.markdown(f"<h3 style='text-align: center;'>Database Visualization 🔬</h3>", unsafe_allow_html=True)
+    lang = st.session_state.get('language', 'en')
+    translations = load_translations(lang)
+    t = translations['db_viz']
+
+    st.markdown(f"<h3 style='text-align: center;'>{t['title']}</h3>", unsafe_allow_html=True)
     
     if 'updated' in st.session_state:
         st.session_state.pop("updated")
@@ -33,24 +35,24 @@ def db_viz(user):
                 }, 
                 num_rows="dynamic"
             )
-            if st.button("Update database"):
+            if st.button(t["admin_section"]["update_button"]):
                 data_json = diseases_edited.to_json(orient="records")
                 response = requests.put(f"{st.session_state['API_URL']}/update_diseases_route", json={"diseases": data_json}, headers={"Content-Type": "application/json"})
                 if response.status_code == 200:
-                    my_bar = st.progress(0, text="Updating database...")
+                    my_bar = st.progress(0, text=t["admin_section"]["progress_text"].format(percent=0))
 
                     for percent_complete in range(100):
                         time.sleep(0.01)
-                        my_bar.progress(percent_complete + 1, text=f"Updating database... {percent_complete + 1}%")
+                        my_bar.progress(percent_complete + 1, text=t["admin_section"]["progress_text"].format(percent=percent_complete + 1))
                     time.sleep(1)
                     my_bar.empty()
                     st.session_state.update({"df": diseases_edited})
                     st.session_state["updated"] = True
                     st.rerun()
                 else:
-                    st.error("Failed to update database, please ensure there is no empty field.")
+                    st.error(t["admin_section"]["error_message"])
 
         else:
             st.dataframe(diseases)
     except requests.exceptions.RequestException as e:
-        st.error(f"No data available, please upload data inside the database.")
+        st.error(t["error_message"])

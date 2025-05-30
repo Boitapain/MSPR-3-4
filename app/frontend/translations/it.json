@@ -1,0 +1,143 @@
+{
+  "dashboard": {
+    "navigation": {
+      "home": "Home",
+      "api_docs": "Documentazione API"
+    },
+    "sections": {
+      "data_management": "Gestione dati",
+      "data_visualization": "Visualizzazione dati",
+      "settings": "Impostazioni"
+    },
+    "buttons": {
+      "csv_import": "Importa CSV",
+      "database": "Database",
+      "statistics": "Statistiche",
+      "predictions": "Previsioni IA",
+      "manage_users": "Gestisci utenti",
+      "profile": "Profilo"
+    }
+  },
+  "page_titles": {
+    "home": "Home",
+    "csv_import": "Importa CSV",
+    "database": "Database",
+    "statistics": "Statistiche",
+    "profile": "Profilo",
+    "predictions": "Previsioni IA",
+    "manage_users": "Gestisci utenti"
+  },
+  "home": {
+    "welcome": "Bentornato, {name}! 👋",
+    "intro": {
+      "title": "Questo è il tuo cruscotto di monitoraggio delle malattie",
+      "description": "Qui puoi monitorare e analizzare i dati sulle malattie, gestire i set di dati e ottenere approfondimenti sulle tendenze globali della salute."
+    },
+    "actions": {
+      "title": "Cosa vuoi fare oggi?",
+      "statistics": "📊 Visualizza statistiche: Esplora le tendenze delle malattie e visualizza i dati su una mappa interattiva.",
+      "manage_data": "📂 Gestisci dati: Rivedi i record esistenti o importa nuovi dati come amministratore nel database.",
+      "analyze": "🔍 Analizza tendenze: Approfondisci i dati per scoprire modelli e approfondimenti."
+    },
+    "navigation_tip": "Usa la barra laterale per navigare nel cruscotto e accedere agli strumenti di cui hai bisogno."
+  },
+  "db_viz": {
+    "title": "Visualizzazione Database 🔬",
+    "admin_section": {
+      "update_button": "Aggiorna database",
+      "progress_text": "Aggiornamento database... {percent}%",
+      "success_message": "Database aggiornato con successo!",
+      "error_message": "Aggiornamento database fallito, assicurati che non ci siano campi vuoti."
+    },
+    "error_message": "Nessun dato disponibile, carica i dati nel database."
+  },
+  "csv_import": {
+    "title": "Importa CSV ↧",
+    "file_uploader": "Scegli un file CSV",
+    "preview_title": "Anteprima del file CSV caricato:",
+    "import_button": "Importa CSV nel database",
+    "loading_message": "Importazione in corso...",
+    "success_message": "CSV importato con successo!",
+    "error_messages": {
+      "api_failure": "Importazione CSV fallita: {message}",
+      "general_error": "Si è verificato un errore: {error}"
+    }
+  },
+  "manage_users": {
+    "title": "Gestisci utenti 👤",
+    "update_button": "Aggiorna database utenti",
+    "empty_fields_error": "Assicurati che non ci siano campi vuoti prima di aggiornare.",
+    "update_progress": "Aggiornamento database utenti... {percent}%",
+    "update_success": "Utenti aggiornati con successo!",
+    "update_error": "Aggiornamento utenti fallito. Assicurati che non ci siano campi vuoti.",
+    "no_data_error": "Nessun dato utente disponibile o errore API."
+  },
+  "predictions": {
+    "title": "Previsioni IA 🔮",
+    "input_labels": {
+      "cases": "Casi",
+      "deaths": "Decessi",
+      "recovered": "Guariti",
+      "country": "Paese"
+    },
+    "predict_button": "Prevedi",
+    "progress_text": "Previsione in corso...",
+    "results_title": "Previsioni per il prossimo mese",
+    "results_labels": {
+      "confirmed": "Casi confermati:",
+      "deaths": "Decessi:",
+      "recovered": "Guariti:"
+    },
+    "error_prefix": "Errore:"
+  },
+  "profile": {
+    "title": "Il tuo profilo",
+    "user_info": {
+      "user": "Utente:",
+      "email": "Email:",
+      "country": "Paese:",
+      "isAdmin": "Amministratore:"
+    },
+    "password_section": {
+      "title": "Aggiorna la tua password",
+      "current_password": "La tua password",
+      "new_password": "Nuova password",
+      "confirm_password": "Conferma password",
+      "update_button": "Aggiorna password",
+      "errors": {
+        "required": "Tutti i campi sono obbligatori.",
+        "mismatch": "La nuova password e la conferma non corrispondono."
+      },
+      "success": "Password aggiornata con successo!",
+      "api_error": "Aggiornamento password fallito."
+    },
+    "logout_button": "Disconnetti"
+  },
+  "stats": {
+    "title": "Cruscotto Statistiche Malattie",
+    "data_fetch": {
+      "no_data": "Nessun dato disponibile da mostrare.",
+      "api_error": "Recupero dati dall'API fallito: {error}",
+      "general_error": "Si è verificato un errore: {error}"
+    },
+    "filters": {
+      "month_range": {
+        "title": "📅 Seleziona un intervallo di mesi consecutivi",
+        "label": "Intervallo mesi:",
+        "format": "da {start} a {end}"
+      },
+      "statistic": {
+        "title": "📊 Seleziona la statistica da visualizzare",
+        "label": "Statistica:"
+      },
+      "disease": {
+        "label": "🦠 Seleziona la malattia da visualizzare",
+        "all_option": "Tutte"
+      }
+    },
+    "visualizations": {
+      "map_title": "Diffusione della malattia per Paese ({stat})",
+      "table_title": "📋 Tabella dati grezzi (Accessibile)"
+    }
+  }
+}
