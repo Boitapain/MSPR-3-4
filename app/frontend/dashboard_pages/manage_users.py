@@ -41,7 +41,7 @@ def manage_users(user):
                     else:
                         data_json = users_edited.to_json(orient="records")
                         response = requests.put(
-                            "http://127.0.0.1:5000/update_users",
+                            f"{st.session_state['API_URL']}/update_users",
                             json={"users": data_json},
                             headers={"Content-Type": "application/json"}
                         )
