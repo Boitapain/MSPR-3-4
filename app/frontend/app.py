@@ -15,8 +15,6 @@ def main():
         # Local development with docker-compose
         API_URL = 'http://api:5000'
 
-    st.session_state['API_URL'] = API_URL
-
     # Initialize session state variables if they don't exist
     if 'new_user' not in st.session_state:
         st.session_state['new_user'] = False

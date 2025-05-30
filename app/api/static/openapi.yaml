@@ -94,6 +94,65 @@ paths:
         "401":
           description: Invalid email or password
 
+  /update_users:
+    put:
+      summary: Update users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                users:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      isAdmin:
+                        type: boolean
+      responses:
+        "200":
+          description: Users updated successfully
+        "400":
+          description: No data provided or data contains null values
+        "500":
+          description: Internal server error
+  
+  /update_password:
+    post:
+      summary: Update user password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                old_password:
+                  type: string
+                new_password:
+                  type: string
+                confirm_password:
+                  type: string
+      responses:
+        "200":
+          description: Mot de passe mis à jour avec succès.
+        "400":
+          description: Tous les champs sont requis ou les nouveaux mots de passe ne correspondent pas.
+        "401":
+          description: Ancien mot de passe incorrect.
+        "500":
+          description: Internal server error
+
   /diseases:
     get:
       summary: Get all diseases

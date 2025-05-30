@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 from flask import Flask, request, jsonify, send_from_directory
 from flask_swagger_ui import get_swaggerui_blueprint
-from db import add_user, get_users, authenticate_user, get_diseases, update_diseases, initialize_db
+from db import add_user, get_users, authenticate_user, get_diseases, update_diseases, initialize_db, update_users as db_update_users
 
 
 app = Flask(__name__)
@@ -51,6 +51,43 @@ def register():
         return jsonify({"message": "User registered successfully"}), 201
     except Exception as e:
         return jsonify({"message": str(e)}), 500
+    
+
+@app.route('/update_users', methods=['PUT'])
+def update_users_route():
+    data = request.get_json()
+    df = data.get('users')
+    
+    if df is None or not df:
+        return jsonify({"message": "No data provided"}), 400
+    if pd.read_json(StringIO(df)).isnull().values.any():
+        return jsonify({"message": "Data contains null values"}), 400
+    try:
+        db_update_users(df)
+        return jsonify({"message": "Users updated successfully"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+    
+@app.route('/update_password', methods=['POST'])
+def update_password():
+    data = request.get_json()
+    email = data.get('email')
+    old_password = data.get('old_password')
+    new_password = data.get('new_password')
+    confirm_password = data.get('confirm_password')
+
+    if not email or not old_password or not new_password or not confirm_password:
+        return jsonify({"message": "Tous les champs sont requis."}), 400
+
+    if new_password != confirm_password:
+        return jsonify({"message": "Les nouveaux mots de passe ne correspondent pas."}), 400
+
+    from db import update_user_password
+    success = update_user_password(email, old_password, new_password)
+    if success:
+        return jsonify({"message": "Mot de passe mis à jour avec succès."}), 200
+    else:
+        return jsonify({"message": "Ancien mot de passe incorrect."}), 401
 
 @app.route('/login', methods=['POST'])
 def login():

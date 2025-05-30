@@ -12,7 +12,7 @@ def stats(user):
 
     try:
         # Fetch data from the API
-        response = requests.get(f"{st.session_state['API_URL']}/diseases")
+        response = requests.get("http://api:5000/diseases")
         response.raise_for_status()
         
         # Parse the response data
