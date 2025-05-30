@@ -23,7 +23,7 @@ def db_viz(user):
             "Active", "New_cases", "New_deaths", "New_recovered"
         ])
         # Display data editor if user is admin, otherwise display the dataframe
-        if user["isAdmin"]:
+        if user["isAdmin"] and user["country"] == "USA":
             diseases_edited = st.data_editor(
                 diseases, 
                 column_config={

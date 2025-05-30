@@ -6,6 +6,15 @@ from dashboard_pages.stats import stats
 from dashboard_pages.profile import profile
 from dashboard_pages.predictions import predictions
 from dashboard_pages.manage_users import manage_users
+import os
+
+
+url = "";
+if(os.getenv("RENDER")):
+    url = st.session_state["API_URL"]
+else :
+    url = "http://localhost:5001"
+
 
 def dashboard(user):
     # Initialize session state for dashboard page if it doesn't exist
@@ -38,16 +47,19 @@ def dashboard(user):
         # Home button
         st.button("Home", type="tertiary", icon=":material/home:", on_click=lambda: st.session_state.update({"dashboard_page": "home"}))
         st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
+        if(user["country"] == "USA"):
+            st.link_button("API Documentation", f"{url}/swagger", type="tertiary", icon=":material/article:")
         
         # CSV Import button
         st.header("Data Management")
-        if user["isAdmin"]:
+        if user["isAdmin"] and user["country"] == "USA":
             st.button("CSV Import", type="tertiary", icon=":material/download:", on_click=lambda: st.session_state.update({"dashboard_page": "csv_import"}))
         st.button("Database", type="tertiary", icon=":material/database:", on_click=lambda: st.session_state.update({"dashboard_page": "database"}))
         st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
         
         st.header("Data Visualization")
-        st.button("Statistics", type="tertiary", icon=":material/monitoring:", on_click=lambda: st.session_state.update({"dashboard_page": "statistics"}))
+        if user["country"] == "USA" or user["country"] == "France":
+            st.button("Statistics", type="tertiary", icon=":material/monitoring:", on_click=lambda: st.session_state.update({"dashboard_page": "statistics"}))
         st.button("AI Predictions", type="tertiary", icon=":material/rocket_launch:", on_click=lambda: st.session_state.update({"dashboard_page": "predictions"}))
         st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
         

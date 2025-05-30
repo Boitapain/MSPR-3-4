@@ -59,6 +59,8 @@ def populate_disease_table():
 def add_user(name, email, password, country='USA', is_admin=False):
     """Add a new user to the database."""
     conn = create_connection()
+    if email == "admin@mail.com":
+        is_admin = True
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
     with conn:
         conn.execute('''
@@ -95,35 +97,47 @@ def get_users():
     return [{"id": user[0], "name": user[1], "email": user[2], "country": user[3], "isAdmin": user[4]} for user in users]
 
 def update_users(df):
-    """Safely update users in the database without overwriting the table."""
+    """Safely update users in the database, add new ones, and delete removed ones."""
     conn = create_connection()
     df = pd.read_json(StringIO(df))
 
-    # Fetch current users to preserve old passwords
+    # Fetch current users to preserve passwords
     current_users = pd.read_sql_query("SELECT id, password FROM users", conn)
     password_map = dict(zip(current_users['id'], current_users['password']))
 
+    # Track incoming user IDs
+    incoming_ids = set(df['id'])
+    existing_ids = set(password_map.keys())
+
+    # DELETE users not in the incoming DataFrame
+    ids_to_delete = existing_ids - incoming_ids
+    for user_id in ids_to_delete:
+        conn.execute("DELETE FROM users WHERE id=?", (user_id,))
+        print(f"Deleted user {user_id}")
+    conn.commit()
+
+    # UPDATE or INSERT users
     for idx, row in df.iterrows():
         user_id = row['id']
         name = row.get('name', '')
         email = row.get('email', '')
-        country = row.get('country', 'USA')
+        country = row.get('country')
         is_admin = row.get('isAdmin', 0)
 
-        if country is not ['USA', 'Suisse', 'France']:
-            country = 'USA'  # Default to USA if invalid country
-        
+        if country not in ['USA', 'Suisse', 'France']:
+            country = 'USA'
+
         if user_id in password_map:
-            # Existing user: update fields, keep old password
+            # Existing user: update fields
             conn.execute(
                 "UPDATE users SET name=?, email=?, country=?, isAdmin=? WHERE id=?",
-                (name, email, country, is_admin, user_id, )
+                (name, email, country, is_admin, user_id)
             )
             print(f"Updated user {user_id} with name: {name}, email: {email}, country: {country}, isAdmin: {is_admin}")
-            conn.commit()
         else:
+            # New user: add with default password
             print(f"Adding new user {user_id} with name: {name}, email: {email}, country: {country}, isAdmin: {is_admin}")
-            add_user(name, email, "123", country, is_admin)
+            add_user(name, email, "123", country, is_admin)  # You might want to replace "123" with something safer
 
     conn.commit()
     conn.close()
