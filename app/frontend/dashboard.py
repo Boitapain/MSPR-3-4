@@ -74,6 +74,8 @@ def dashboard(user):
             st.button(t["buttons"]["csv_import"], type="tertiary", icon=":material/download:", on_click=lambda: st.session_state.update({"dashboard_page": "csv_import"}))
         st.button(t["buttons"]["database"], type="tertiary", icon=":material/database:", on_click=lambda: st.session_state.update({"dashboard_page": "database"}))
         st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
+        if(user["country"] == "USA"):
+            st.link_button("API Documentation", f"{url}/swagger", type="tertiary", icon=":material/article:")
         
         # Data Visualization section
         st.header(t["sections"]["data_visualization"])
