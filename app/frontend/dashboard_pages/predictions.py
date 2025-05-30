@@ -2,8 +2,16 @@ import streamlit as st
 import requests
 import pandas as pd
 
+from sklearn.preprocessing import LabelEncoder
+
+from translations import load_translations
+
 def predictions(user):
-    st.markdown(f"<h3 style='text-align: center;'>AI Predictions 🔮</h3>", unsafe_allow_html=True)
+    lang = st.session_state['language']
+    translations = load_translations(lang)
+    t = translations['predictions']
+
+    st.markdown(f"<h3 style='text-align: center;'>{t['title']}</h3>", unsafe_allow_html=True)
 
     if 'predicted' in st.session_state:
         st.session_state.pop("predicted")
@@ -11,7 +19,6 @@ def predictions(user):
     
     df = pd.read_csv("data_etl_output.csv")
     countries = sorted(df['Country'].unique())
-    from sklearn.preprocessing import LabelEncoder
     le = LabelEncoder()
     le.fit(df['Country'])
     country_to_code = {country: int(code) for country, code in zip(le.classes_, le.transform(le.classes_))}
@@ -19,14 +26,14 @@ def predictions(user):
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.number_input("Cases", min_value=0, max_value=1000000, value=0, key="cases")
+        st.number_input(t['input_labels']['cases'], min_value=0, max_value=1000000, value=0, key="cases")
     with col2:
-        st.number_input("Deaths", min_value=0, max_value=1000000, value=0, key="deaths")
+        st.number_input(t['input_labels']['deaths'], min_value=0, max_value=1000000, value=0, key="deaths")
     with col3:
-        st.number_input("Recovered", min_value=0, max_value=1000000, value=0, key="recovered")
+        st.number_input(t['input_labels']['recovered'], min_value=0, max_value=1000000, value=0, key="recovered")
     with col4:
         country_display = st.selectbox(
-            "Country",
+            t['input_labels']['country'],
             options=[(name, code) for name, code in country_to_code.items()],
             format_func=lambda x: x[0],
             index=0,
@@ -37,13 +44,12 @@ def predictions(user):
     # Center the button using columns
     col_center = st.columns([1, 2, 1])
     with col_center[1]:
-        predict_clicked = st.button("Predict", use_container_width=True)
+        predict_clicked = st.button(t['predict_button'], use_container_width=True)
 
     if predict_clicked:
-        with st.spinner("Predicting..."):
+        with st.spinner(t['progress_text']):
             progress = st.progress(0)
             # Simulate progress
-            import time
             for i in range(1, 101, 10):
                 time.sleep(0.03)
                 progress.progress(i)
@@ -61,11 +67,11 @@ def predictions(user):
             st.markdown(
                 f"""
                 <div style="border-radius: 10px; border: 1px solid #e6e6e6; padding: 2rem; margin-top: 2rem; background: #fafbfc;">
-                    <h4 style="text-align:center; color:#222;">Predictions for the next month</h4>
+                    <h4 style="text-align:center; color:#222;">{t['results_title']}</h4>
                     <div style="font-size: 1.2rem; text-align:center;">
-                        <b>Confirmed cases:</b> {int(prediction[0][0]):,}<br>
-                        <b>Deaths:</b> {int(prediction[0][1]):,}<br>
-                        <b>Recovered:</b> {int(prediction[0][2]):,}
+                        <b>{t['results_labels']['confirmed']}</b> {int(prediction[0][0]):,}<br>
+                        <b>{t['results_labels']['deaths']}</b> {int(prediction[0][1]):,}<br>
+                        <b>{t['results_labels']['recovered']}</b> {int(prediction[0][2]):,}
                     </div>
                 </div>
                 """,
@@ -73,6 +79,6 @@ def predictions(user):
             )
         else:
             st.markdown(
-                f"<div style='color: #b00020; text-align:center; font-weight:bold;'>Error: {response.json().get('message')}</div>",
+                f"<div style='color: #b00020; text-align:center; font-weight:bold;'>{t['error_prefix']} {response.json().get('message')}</div>",
                 unsafe_allow_html=True
             )

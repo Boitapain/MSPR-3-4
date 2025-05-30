@@ -1,0 +1,143 @@
+{
+    "dashboard": {
+        "navigation": {
+            "home": "Accueil",
+            "api_docs": "Documentation API"
+        },
+        "sections": {
+            "data_management": "Gestion des données",
+            "data_visualization": "Visualisation des données",
+            "settings": "Paramètres"
+        },
+        "buttons": {
+            "csv_import": "Import CSV",
+            "database": "Base de données",
+            "statistics": "Statistiques",
+            "predictions": "Prédictions IA",
+            "manage_users": "Gérer les utilisateurs",
+            "profile": "Profil"
+        }
+    },
+    "page_titles": {
+        "home": "Accueil",
+        "csv_import": "Import CSV",
+        "database": "Base de données",
+        "statistics": "Statistiques",
+        "profile": "Profil",
+        "predictions": "Prédictions IA",
+        "manage_users": "Gérer les utilisateurs"
+    },
+    "home": {
+        "welcome": "Bon retour, {name} ! 👋",
+        "intro": {
+            "title": "Voici votre tableau de bord de suivi des maladies",
+            "description": "Ici, vous pouvez surveiller et analyser les données de maladies, gérer les jeux de données et obtenir des insights sur les tendances mondiales de la santé."
+        },
+        "actions": {
+            "title": "Que souhaitez-vous faire aujourd’hui ?",
+            "statistics": "📊 Voir les statistiques : Explorez les tendances des maladies et visualisez les données sur une carte interactive.",
+            "manage_data": "📂 Gérer les données : Consultez les enregistrements existants ou importez de nouvelles données en tant qu’administrateur dans la base de données.",
+            "analyze": "🔍 Analyser les tendances : Plongez plus profondément dans les données pour découvrir des motifs et des insights."
+        },
+        "navigation_tip": "Utilisez la barre latérale pour naviguer dans le tableau de bord et accéder aux outils nécessaires."
+    },
+    "db_viz": {
+        "title": "Visualisation de la base de données 🔬",
+        "admin_section": {
+            "update_button": "Mettre à jour la base de données",
+            "progress_text": "Mise à jour de la base de données... {percent}%",
+            "success_message": "Base de données mise à jour avec succès !",
+            "error_message": "Échec de la mise à jour, veuillez vérifier qu’aucun champ n’est vide."
+        },
+        "error_message": "Aucune donnée disponible, veuillez importer des données dans la base."
+    },
+    "csv_import": {
+        "title": "Import CSV ↧",
+        "file_uploader": "Choisissez un fichier CSV",
+        "preview_title": "Aperçu du fichier CSV importé :",
+        "import_button": "Importer le CSV dans la base",
+        "loading_message": "Importation en cours...",
+        "success_message": "CSV importé avec succès !",
+        "error_messages": {
+            "api_failure": "Échec de l’import CSV : {message}",
+            "general_error": "Une erreur est survenue : {error}"
+        }
+    },
+    "manage_users": {
+        "title": "Gérer les utilisateurs 👤",
+        "update_button": "Mettre à jour la base utilisateurs",
+        "empty_fields_error": "Veuillez vous assurer qu’aucun champ n’est vide avant la mise à jour.",
+        "update_progress": "Mise à jour de la base utilisateurs... {percent}%",
+        "update_success": "Utilisateurs mis à jour avec succès !",
+        "update_error": "Échec de la mise à jour des utilisateurs. Veuillez vérifier qu’aucun champ n’est vide.",
+        "no_data_error": "Aucune donnée utilisateur disponible ou erreur API."
+    },
+    "predictions": {
+        "title": "Prédictions IA 🔮",
+        "input_labels": {
+            "cases": "Cas",
+            "deaths": "Décès",
+            "recovered": "Guéris",
+            "country": "Pays"
+        },
+        "predict_button": "Prédire",
+        "progress_text": "Prédiction en cours...",
+        "results_title": "Prédictions pour le mois prochain",
+        "results_labels": {
+            "confirmed": "Cas confirmés :",
+            "deaths": "Décès :",
+            "recovered": "Guéris :"
+        },
+        "error_prefix": "Erreur :"
+    },
+    "profile": {
+        "title": "Votre profil",
+        "user_info": {
+            "user": "Utilisateur :",
+            "email": "Email :",
+            "country": "Pays :",
+            "isAdmin": "Administrateur :"
+        },
+        "password_section": {
+            "title": "Mettez à jour votre mot de passe",
+            "current_password": "Votre mot de passe",
+            "new_password": "Nouveau mot de passe",
+            "confirm_password": "Confirmer le mot de passe",
+            "update_button": "Mettre à jour le mot de passe",
+            "errors": {
+                "required": "Tous les champs sont obligatoires.",
+                "mismatch": "Le nouveau mot de passe et la confirmation ne correspondent pas."
+            },
+            "success": "Mot de passe mis à jour avec succès !",
+            "api_error": "Échec de la mise à jour du mot de passe."
+        },
+        "logout_button": "Se déconnecter"
+    },
+    "stats": {
+        "title": "Tableau de bord des statistiques de maladies",
+        "data_fetch": {
+            "no_data": "Aucune donnée disponible à afficher.",
+            "api_error": "Échec de récupération des données depuis l’API : {error}",
+            "general_error": "Une erreur est survenue : {error}"
+        },
+        "filters": {
+            "month_range": {
+                "title": "📅 Sélectionnez une plage de mois consécutifs",
+                "label": "Plage de mois :",
+                "format": "de {start} à {end}"
+            },
+            "statistic": {
+                "title": "📊 Sélectionnez la statistique à afficher",
+                "label": "Statistique :"
+            },
+            "disease": {
+                "label": "🦠 Sélectionnez la maladie à afficher",
+                "all_option": "Toutes"
+            }
+        },
+        "visualizations": {
+            "map_title": "Propagation des maladies par pays ({stat})",
+            "table_title": "📋 Tableau des données brutes (accessible)"
+        }
+    }
+}
