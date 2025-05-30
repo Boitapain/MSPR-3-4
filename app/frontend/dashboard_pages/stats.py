@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 import plotly.express as px
+from translations import load_translations
 
 from translations import load_translations
 

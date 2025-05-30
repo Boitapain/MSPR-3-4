@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import requests
-
 from translations import load_translations
 
 def csv_import(user):
