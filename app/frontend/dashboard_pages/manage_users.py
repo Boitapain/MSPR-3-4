@@ -4,6 +4,8 @@ import requests
 import time
 from translations import load_translations
 
+from translations import load_translations
+
 def manage_users(user):
     lang = st.session_state.get('language', 'en')
     translations = load_translations(lang)
@@ -67,6 +69,7 @@ def manage_users(user):
                                 )
                             time.sleep(1)
                             my_bar.empty()
+                            st.success(t['update_success'])
                             st.session_state["users_updated"] = True
                             st.rerun()
                         else:

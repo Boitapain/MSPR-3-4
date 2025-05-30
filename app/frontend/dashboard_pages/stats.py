@@ -24,7 +24,7 @@ def stats(user):
             
         df = pd.DataFrame(data, columns=[
             "Id", "Name", "Date", "Country", "Confirmed", "Deaths", "Recovered", 
-            "New_cases", "New_deaths", "New_recovered"
+            "New_cases", "New_deaths", "New_recovered"  # Keep original English column names
         ])
         
         if not df.empty:
@@ -81,6 +81,5 @@ def stats(user):
         st.error(t['data_fetch']['api_error'].format(error=e))
     except Exception as e:
         st.error(t['data_fetch']['general_error'].format(error=e))
-
 if __name__ == "__main__":
     stats(None)

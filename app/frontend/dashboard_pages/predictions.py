@@ -5,6 +5,10 @@ import time
 from sklearn.preprocessing import LabelEncoder
 from translations import load_translations
 
+from sklearn.preprocessing import LabelEncoder
+
+from translations import load_translations
+
 def predictions(user):
     lang = st.session_state['language']
     translations = load_translations(lang)
