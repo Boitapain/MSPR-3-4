@@ -133,6 +133,7 @@ def update_users(df):
                 "UPDATE users SET name=?, email=?, country=?, isAdmin=? WHERE id=?",
                 (name, email, country, is_admin, user_id)
             )
+            conn.commit()
             print(f"Updated user {user_id} with name: {name}, email: {email}, country: {country}, isAdmin: {is_admin}")
         else:
             # New user: add with default password

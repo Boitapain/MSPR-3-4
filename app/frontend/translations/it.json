@@ -65,6 +65,13 @@
   },
   "manage_users": {
     "title": "Gestisci utenti 👤",
+    "admin_columns": {
+  "id": "ID",
+  "name": "Nome",
+  "email": "Email",
+  "country": "Paese",
+  "isAdmin": "Amministratore"
+},
     "update_button": "Aggiorna database utenti",
     "empty_fields_error": "Assicurati che non ci siano campi vuoti prima di aggiornare.",
     "update_progress": "Aggiornamento database utenti... {percent}%",
@@ -92,6 +99,7 @@
   },
   "profile": {
     "title": "Il tuo profilo",
+    "language_selection": "Lingua",
     "user_info": {
       "user": "Utente:",
       "email": "Email:",

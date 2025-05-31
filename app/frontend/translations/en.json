@@ -65,6 +65,13 @@
   },
   "manage_users": {
     "title": "Manage Users 👤",
+    "admin_columns": {
+      "id": "id",
+      "name": "name",
+      "email": "email",
+      "country": "country",
+      "isAdmin": "Admin"
+    },
     "update_button": "Update users database",
     "empty_fields_error": "Please ensure there are no empty fields before updating.",
     "update_progress": "Updating users database... {percent}%",
@@ -89,7 +96,9 @@
       "recovered": "Recovered:"
     },
     "error_prefix": "Error:"
-  },"profile": {
+  },
+  "language_selection": "Language",
+  "profile": {
     "title": "Your profile",
     "user_info": {
       "user": "User:",
@@ -127,7 +136,8 @@
       },
       "statistic": {
         "title": "📊 Select the statistic to display",
-        "label": "Statistic:"
+        "label": "Statistic:",
+        "options": ["Confirmed", "Deaths", "Recovered", "New_cases", "New_deaths", "New_recovered"]
       },
       "disease": {
         "label": "🦠 Select the disease to display",
