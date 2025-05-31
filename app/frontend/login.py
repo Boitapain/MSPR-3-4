@@ -14,7 +14,7 @@ def login():
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
-        if st.button("Login", key="login_button", type="primary", icon=":material/login:"):
+        if st.button("Login", help="Connect to your account", key="login_button", type="primary", icon=":material/login:"):
             response = requests.post(f"{st.session_state['API_URL']}/login", json={"email": email, "password": password}, headers={"Content-Type": "application/json"})
             if response.status_code == 200:
                 user = response.json().get("user")
@@ -26,7 +26,7 @@ def login():
                 st.error("Invalid email or password")
     
     with col2:
-        st.button("Create Account", type="primary", icon=":material/person_add:", on_click=lambda: st.session_state.update({"page": "create_account"}), key="create_account_button")
+        st.button("Create Account", help="Create your new account", type="primary", icon=":material/person_add:", on_click=lambda: st.session_state.update({"page": "create_account"}), key="create_account_button")
 
 if __name__ == "__main__":
     login()

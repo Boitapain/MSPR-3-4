@@ -12,12 +12,21 @@ def profile(user):
     col1, col2 = st.columns(2)
     # Display country information
     with col1:
-        st.markdown(f"<p style='font-size:1.5rem;'>{t['user_info']['user']} <b>{user['name']}</b></p>", unsafe_allow_html=True)
+        st.markdown(
+            f"<p style='font-size:1.5rem;'>{t['user_info']['user']} <b>{user['name']}</b></p>", 
+            unsafe_allow_html=True,
+        )
     # Display language selection only if the user is from Switzerland
     with col2: 
-        st.markdown(f"<p style='font-size:1.5rem;'>{t['user_info']['email']} <span>{user['email']}</span></p>", unsafe_allow_html=True)    
+        st.markdown(
+            f"<p style='font-size:1.5rem;'> <span>{user['email']}</span></p>", 
+            unsafe_allow_html=True
+        )    
     
-    st.markdown(f"<p style='font-size:1.5rem;'>{t['user_info']['country']} <span>{user['country']}</span></p>", unsafe_allow_html=True)
+    st.markdown(
+        f"<p style='font-size:1.5rem;'>{t['user_info']['country']} <span>{user['country']}</span></p>", 
+        unsafe_allow_html=True
+    )
 
     # Display language selection only if the user is from Switzerland
     if user["country"] == "Suisse":
@@ -37,23 +46,26 @@ def profile(user):
 
         # Display selectbox
         selected_display = st.selectbox(
-            t['language_selection'],  # Assume this is a translated string like "Select language"
+            t['language_selection'],
             options=lang_display,
             index=default_index,
-            key="language_selector"
+            key="language_selector",
+            help=t['help_messages']['language_selector']
         )
 
         # Get corresponding language code
         new_lang = lang_map[selected_display]
 
-        
         # Update session state if language changed
         if new_lang != lang:
             st.session_state['update_language'] = True
             st.session_state['language'] = new_lang
             st.rerun()  # Rerun the app to apply the new language
     
-    st.markdown(f"<p style='font-size:1.5rem;'>{t['user_info']['isAdmin']} <b>{True if user['isAdmin'] == 1 else False}</b></h3>", unsafe_allow_html=True)
+    st.markdown(
+        f"<p style='font-size:1.5rem;'>{t['user_info']['isAdmin']} <b>{True if user['isAdmin'] == 1 else False}</b></h3>", 
+        unsafe_allow_html=True
+    )
 
     st.markdown("---")
     
@@ -62,15 +74,34 @@ def profile(user):
         st.session_state['show_password_form'] = False
 
     # Clickable text to show/hide
-    if st.button(t['password_section']['title'], use_container_width=True):
+    if st.button(
+        t['password_section']['title'], 
+        use_container_width=True,
+        help=t['help_messages']['password_toggle']
+    ):
         st.session_state['show_password_form'] = not st.session_state['show_password_form']
 
     if st.session_state['show_password_form']:
         with st.form("update_password_form"):
-            old_password = st.text_input(t['password_section']['current_password'], type="password")
-            new_password = st.text_input(t['password_section']['new_password'], type="password")
-            confirm_password = st.text_input(t['password_section']['confirm_password'], type="password")
-            submitted = st.form_submit_button(t['password_section']['update_button'], use_container_width=True)
+            old_password = st.text_input(
+                t['password_section']['current_password'], 
+                type="password"
+                )
+            new_password = st.text_input(
+                t['password_section']['new_password'], 
+                type="password",
+                help=t['help_messages']['new_password']
+            )
+            confirm_password = st.text_input(
+                t['password_section']['confirm_password'], 
+                type="password",
+                help=t['help_messages']['confirm_password']
+            )
+            submitted = st.form_submit_button(
+                t['password_section']['update_button'], 
+                use_container_width=True,
+                help=t['help_messages']['password_update']
+            )
             if submitted:
                 if not old_password or not new_password or not confirm_password:
                     st.error(t['password_section']['errors']['required'])
@@ -94,7 +125,11 @@ def profile(user):
 
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        if st.button(t['logout_button'], icon=":material/logout:"):
+        if st.button(
+            t['logout_button'], 
+            icon=":material/logout:",
+            help=t['help_messages']['logout']
+        ):
             st.session_state.clear()
 <<<<<<< HEAD
             st.rerun()

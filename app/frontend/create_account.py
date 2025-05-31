@@ -5,21 +5,21 @@ def create_account():
     st.markdown("<h1 style='text-align: center;'>Disease track</h1>", unsafe_allow_html=True)
     st.subheader("Create Account")
     
-    name = st.text_input("Name")
-    email = st.text_input("Email")
-    country = st.selectbox("Country", ["USA", "France", "Suisse"])
-    password = st.text_input("Password", type="password")
-    confirm_password = st.text_input("Confirm Password", type="password")
+    name = st.text_input("Name", help="Enter your full name")
+    email = st.text_input("Email", help="Enter your email address")
+    country = st.selectbox("Country", ["USA", "France", "Suisse"], help="Select your country of residence")
+    password = st.text_input("Password", type="password", help="Enter a secure password")
+    confirm_password = st.text_input("Confirm Password", type="password", help="Re-enter your password for confirmation")
     
     col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
     
     with col1:
-        if st.button("Cancel", icon=":material/close:", on_click=lambda: st.session_state.update({"page": "login"})):
+        if st.button("Cancel", help="Go back to login", icon=":material/close:", on_click=lambda: st.session_state.update({"page": "login"})):
             st.session_state['page'] = 'login'
             st.rerun()
     
     with col2:
-        if st.button("Register", type="primary", icon=":material/assignment_turned_in:"):
+        if st.button("Register", help="Create your account",type="primary", icon=":material/assignment_turned_in:"):
             if name == "" or email == "" or password == "" or confirm_password == "":
                 st.error("All fields are required")
             else:
