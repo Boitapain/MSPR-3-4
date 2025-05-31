@@ -1,151 +1,199 @@
 {
-    "dashboard": {
-        "navigation": {
-            "home": "Accueil",
-            "api_docs": "Documentation API"
-        },
-        "sections": {
-            "data_management": "Gestion des données",
-            "data_visualization": "Visualisation des données",
-            "settings": "Paramètres"
-        },
-        "buttons": {
-            "csv_import": "Import CSV",
-            "database": "Base de données",
-            "statistics": "Statistiques",
-            "predictions": "Prédictions IA",
-            "manage_users": "Gérer les utilisateurs",
-            "profile": "Profil"
-        }
+  "dashboard": {
+    "navigation": {
+      "home": "Accueil",
+      "home_help": "Aller à la page d'accueil",
+      "api_docs": "Documentation API",
+      "api_docs_help": "Accéder à la documentation API"
     },
-    "page_titles": {
-        "home": "Accueil",
-        "csv_import": "Import CSV",
-        "database": "Base de données",
-        "statistics": "Statistiques",
-        "profile": "Profil",
-        "predictions": "Prédictions IA",
-        "manage_users": "Gérer les utilisateurs"
+    "sections": {
+      "data_management": "Gestion des données",
+      "data_visualization": "Visualisation des données",
+      "settings": "Paramètres"
     },
-    "home": {
-        "welcome": "Bon retour, {name} ! 👋",
-        "intro": {
-            "title": "Voici votre tableau de bord de suivi des maladies",
-            "description": "Ici, vous pouvez surveiller et analyser les données sur les maladies, gérer les jeux de données et obtenir des insights sur les tendances mondiales de santé."
-        },
-        "actions": {
-            "title": "Que souhaitez-vous faire aujourd’hui ?",
-            "statistics": "📊 Voir les statistiques : Explorez les tendances des maladies et visualisez les données sur une carte interactive.",
-            "manage_data": "📂 Gérer les données : Consultez les enregistrements existants ou importez de nouvelles données en tant qu’administrateur dans la base de données.",
-            "analyze": "🔍 Analyser les tendances : Plongez plus profondément dans les données pour découvrir des motifs et des insights."
-        },
-        "navigation_tip": "Utilisez la barre latérale pour naviguer dans le tableau de bord et accéder aux outils dont vous avez besoin."
-    },
-    "db_viz": {
-        "title": "Visualisation de la base de données 🔬",
-        "admin_section": {
-            "update_button": "Mettre à jour la base de données",
-            "progress_text": "Mise à jour de la base de données... {percent}%",
-            "success_message": "Base de données mise à jour avec succès !",
-            "error_message": "Échec de la mise à jour, veuillez vérifier qu’aucun champ n’est vide."
-        },
-        "error_message": "Aucune donnée disponible, veuillez importer des données dans la base."
-    },
-    "csv_import": {
-        "title": "Import CSV ↧",
-        "file_uploader": "Choisissez un fichier CSV",
-        "preview_title": "Aperçu du fichier CSV importé :",
-        "import_button": "Importer le CSV dans la base de données",
-        "loading_message": "Importation en cours...",
-        "success_message": "CSV importé avec succès !",
-        "error_messages": {
-            "api_failure": "Échec de l’import du CSV : {message}",
-            "general_error": "Une erreur est survenue : {error}"
-        }
-    },
-    "manage_users": {
-        "title": "Gérer les utilisateurs 👤",
-        "admin_columns": {
-            "id": "ID",
-            "name": "Nom",
-            "email": "Email",
-            "country": "Pays",
-            "isAdmin": "Administrateur"
-        },
-        "update_button": "Mettre à jour la base des utilisateurs",
-        "empty_fields_error": "Veuillez vérifier qu’aucun champ n’est vide avant la mise à jour.",
-        "update_progress": "Mise à jour de la base des utilisateurs... {percent}%",
-        "update_success": "Utilisateurs mis à jour avec succès !",
-        "update_error": "Échec de la mise à jour des utilisateurs. Veuillez vérifier qu’aucun champ n’est vide.",
-        "no_data_error": "Aucune donnée utilisateur disponible ou erreur API."
-    },
-    "predictions": {
-        "title": "Prédictions IA 🔮",
-        "input_labels": {
-            "cases": "Cas",
-            "deaths": "Décès",
-            "recovered": "Guéris",
-            "country": "Pays"
-        },
-        "predict_button": "Prédire",
-        "progress_text": "Prédiction en cours...",
-        "results_title": "Prédictions pour le mois prochain",
-        "results_labels": {
-            "confirmed": "Cas confirmés :",
-            "deaths": "Décès :",
-            "recovered": "Guéris :"
-        },
-        "error_prefix": "Erreur :"
-    },
-    "profile": {
-        "title": "Votre profil",
-        "language_selection": "Langue",
-        "user_info": {
-            "user": "Utilisateur :",
-            "email": "Email :",
-            "country": "Pays :",
-            "isAdmin": "Administrateur :"
-        },
-        "password_section": {
-            "title": "Mettre à jour votre mot de passe",
-            "current_password": "Votre mot de passe",
-            "new_password": "Nouveau mot de passe",
-            "confirm_password": "Confirmer le mot de passe",
-            "update_button": "Mettre à jour le mot de passe",
-            "errors": {
-                "required": "Tous les champs sont obligatoires.",
-                "mismatch": "Le nouveau mot de passe et la confirmation ne correspondent pas."
-            },
-            "success": "Mot de passe mis à jour avec succès !",
-            "api_error": "Échec de la mise à jour du mot de passe."
-        },
-        "logout_button": "Déconnexion"
-    },
-    "stats": {
-        "title": "Tableau de bord des statistiques des maladies",
-        "data_fetch": {
-            "no_data": "Aucune donnée disponible à afficher.",
-            "api_error": "Échec de récupération des données depuis l’API : {error}",
-            "general_error": "Une erreur est survenue : {error}"
-        },
-        "filters": {
-            "month_range": {
-                "title": "📅 Sélectionnez une plage de mois consécutifs",
-                "label": "Plage de mois :",
-                "format": "De {start} à {end}"
-            },
-            "statistic": {
-                "title": "📊 Sélectionnez la statistique à afficher",
-                "label": "Statistique :"
-            },
-            "disease": {
-                "label": "🦠 Sélectionnez la maladie à afficher",
-                "all_option": "Toutes"
-            }
-        },
-        "visualizations": {
-            "map_title": "Propagation de la maladie par pays ({stat})",
-            "table_title": "📋 Tableau des données brutes (Accessible)"
-        }
+    "buttons": {
+      "csv_import": "Import CSV",
+      "csv_import_help": "Aller à la page d'import CSV",
+      "database": "Base de données",
+      "database_help": "Aller à la page de la base de données",
+      "statistics": "Statistiques",
+      "statistics_help": "Aller à la page des statistiques",
+      "predictions": "Prédictions IA",
+      "predictions_help": "Aller à la page des prédictions",
+      "manage_users": "Gérer les utilisateurs",
+      "manage_users_help": "Aller à la page de gestion des utilisateurs",
+      "profile": "Profil",
+      "profile_help": "Aller à votre page de profil"
     }
+  },
+  "page_titles": {
+    "home": "Accueil",
+    "csv_import": "Import CSV",
+    "database": "Base de données",
+    "statistics": "Statistiques",
+    "profile": "Profil",
+    "predictions": "Prédictions IA",
+    "manage_users": "Gérer les utilisateurs"
+  },
+  "home": {
+    "welcome": "Bienvenue, {name} ! 👋",
+    "intro": {
+      "title": "Tableau de bord de suivi des maladies",
+      "description": "Ici, vous pouvez surveiller et analyser les données sur les maladies, gérer des ensembles de données et obtenir des insights sur les tendances mondiales de santé."
+    },
+    "actions": {
+      "title": "Que souhaitez-vous faire aujourd'hui ?",
+      "statistics": "📊 Voir les statistiques : Explorer les tendances des maladies et visualiser les données sur une carte interactive.",
+      "manage_data": "📂 Gérer les données : Examiner les enregistrements existants ou importer de nouvelles données en tant qu'administrateur.",
+      "analyze": "🔍 Analyser les tendances : Approfondir l'analyse des données pour découvrir des modèles et insights."
+    },
+    "navigation_tip": "Utilisez la barre latérale pour naviguer dans le tableau de bord et accéder aux outils dont vous avez besoin.",
+    "help_messages": {
+      "welcome": "Message personnalisé affichant votre statut de connexion et nom d'utilisateur.",
+      "dashboard_intro": "Aperçu des fonctionnalités du tableau de bord.",
+      "action_statistics": "Accéder aux visualisations interactives et cartes des données sur les maladies.",
+      "action_manage_data": "Fonctions administratives pour gérer la base de données (admin uniquement).",
+      "action_analyze": "Outils d'analyse avancée pour explorer les données en profondeur.",
+      "navigation_tip": "La barre latérale contient toutes les sections disponibles de cette application."
+    }
+  },
+  "db_viz": {
+    "title": "Visualisation de la base de données 🔬",
+    "admin_section": {
+      "update_button": "Mettre à jour la base",
+      "progress_text": "Mise à jour de la base... {percent}%",
+      "success_message": "Base de données mise à jour avec succès !",
+      "error_message": "Échec de la mise à jour, vérifiez qu'aucun champ n'est vide."
+    },
+    "error_message": "Aucune donnée disponible, veuillez importer des données.",
+    "help_messages": {
+      "update_button": "Cliquez pour sauvegarder toutes les modifications. Cela mettra à jour le serveur.",
+      "data_view": "Vue en lecture seule des données actuelles sur les maladies.",
+      "progress_bar": "Indicateur visuel de la progression de la mise à jour."
+    }
+  },
+  "csv_import": {
+    "title": "Import CSV ↧",
+    "file_uploader": "Choisir un fichier CSV",
+    "preview_title": "Aperçu du fichier CSV :",
+    "import_button": "Importer CSV dans la base",
+    "loading_message": "Import en cours...",
+    "success_message": "CSV importé avec succès !",
+    "error_messages": {
+      "api_failure": "Échec de l'import : {message}",
+      "general_error": "Une erreur est survenue : {error}"
+    },
+    "help_messages": {
+      "file_uploader": "Importez un fichier CSV contenant des données sur les maladies. Le fichier doit avoir les colonnes requises.",
+      "import_button": "Cliquez pour importer les données affichées dans le système.",
+      "preview": "Affiche les 5 premières lignes pour vérifier que les données sont correctes."
+    }
+  },
+  "manage_users": {
+    "title": "Gérer les utilisateurs 👤",
+    "admin_columns": {
+      "id": "id",
+      "name": "nom",
+      "email": "email",
+      "country": "pays",
+      "isAdmin": "Admin"
+    },
+    "update_button": "Mettre à jour les utilisateurs",
+    "empty_fields_error": "Vérifiez qu'aucun champ n'est vide avant la mise à jour.",
+    "update_progress": "Mise à jour... {percent}%",
+    "update_success": "Utilisateurs mis à jour avec succès !",
+    "update_error": "Échec de la mise à jour. Vérifiez les champs vides.",
+    "no_data_error": "Aucune donnée utilisateur ou erreur API.",
+    "help_messages": {
+      "update_button": "Cliquez pour sauvegarder toutes les modifications des utilisateurs.",
+      "readonly_view": "Vue en lecture seule de tous les utilisateurs enregistrés.",
+      "progress_bar": "Indicateur de progression de la mise à jour."
+    }
+  },
+  "predictions": {
+    "title": "Prédictions IA 🔮",
+    "input_labels": {
+      "cases": "Cas",
+      "deaths": "Décès",
+      "recovered": "Guérisons",
+      "country": "Pays"
+    },
+    "predict_button": "Prédire",
+    "progress_text": "Prédiction en cours...",
+    "results_title": "Prédictions pour le mois prochain",
+    "results_labels": {
+      "confirmed": "Cas confirmés :",
+      "deaths": "Décès :",
+      "recovered": "Guérisons :"
+    },
+    "error_prefix": "Erreur :",
+    "help_messages": {
+      "cases_input": "Entrez le nombre actuel de cas confirmés",
+      "deaths_input": "Entrez le nombre actuel de décès",
+      "recovered_input": "Entrez le nombre actuel de guérisons",
+      "country_select": "Sélectionnez le pays pour l'analyse",
+      "predict_button": "Cliquez pour générer des prédictions pour le mois prochain",
+      "progress_bar": "Prédiction en cours - le modèle IA analyse les tendances"
+    }
+  },
+  "profile": {
+    "title": "Votre profil",
+    "language_selection": "Langue",
+    "user_info": {
+      "user": "Utilisateur :",
+      "email": "Email :",
+      "country": "Pays :",
+      "isAdmin": "Admin :"
+    },
+    "password_section": {
+      "title": "Mettre à jour votre mot de passe",
+      "current_password": "Votre mot de passe",
+      "new_password": "Nouveau mot de passe",
+      "confirm_password": "Confirmer le mot de passe",
+      "update_button": "Mettre à jour",
+      "errors": {
+        "required": "Tous les champs sont requis.",
+        "mismatch": "Les mots de passe ne correspondent pas."
+      },
+      "success": "Mot de passe mis à jour avec succès !",
+      "api_error": "Échec de la mise à jour."
+    },
+    "logout_button": "Déconnexion",
+    "help_messages": {
+      "language_selector": "Changer la langue (disponible pour les utilisateurs suisses).",
+      "password_toggle": "Cliquez pour afficher/masquer le formulaire de mot de passe.",
+      "new_password": "Entrez votre nouveau mot de passe (8 caractères minimum).",
+      "confirm_password": "Confirmez votre nouveau mot de passe.",
+      "password_update": "Envoyez votre nouveau mot de passe après avoir tout rempli.",
+      "logout": "Cliquez pour vous déconnecter."
+    }
+  },
+  "stats": {
+    "title": "Tableau de bord des statistiques",
+    "data_fetch": {
+      "no_data": "Aucune donnée disponible.",
+      "api_error": "Échec de récupération des données : {error}",
+      "general_error": "Une erreur est survenue : {error}"
+    },
+    "filters": {
+      "month_range": {
+        "title": "📅 Sélectionnez une plage de mois",
+        "label": "Plage de mois :",
+        "format": "{start} à {end}"
+      },
+      "statistic": {
+        "title": "📊 Sélectionnez la statistique",
+        "label": "Statistique :",
+        "options": ["Confirmés", "Décès", "Guérisons", "Nouveaux_cas", "Nouveaux_décès", "Nouvelles_guérisons"]
+      },
+      "disease": {
+        "label": "🦠 Sélectionnez la maladie",
+        "all_option": "Toutes"
+      }
+    },
+    "visualizations": {
+      "map_title": "Propagation par pays ({stat})",
+      "table_title": "📋 Tableau des données brutes"
+    }
+  }
 }

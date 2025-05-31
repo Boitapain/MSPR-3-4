@@ -11,15 +11,12 @@ def home(user):
         f"<h3 style='text-align: center;'>{t['welcome'].format(name=user['name'])}</h3>",
         unsafe_allow_html=True
     )
-
     # Dashboard introduction
     st.markdown(
         f"""
-        #
         <p style='text-align: center; font-size: 18px;'>
         <b>{t['intro']['title']}</b><br>
         {t['intro']['description']}
-        </p>
         <hr>
         <h4 style='text-align: center;'>{t['actions']['title']}</h4>
         <ul style='font-size: 16px;'>
