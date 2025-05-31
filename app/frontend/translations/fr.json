@@ -31,7 +31,7 @@
         "welcome": "Bon retour, {name} ! 👋",
         "intro": {
             "title": "Voici votre tableau de bord de suivi des maladies",
-            "description": "Ici, vous pouvez surveiller et analyser les données de maladies, gérer les jeux de données et obtenir des insights sur les tendances mondiales de la santé."
+            "description": "Ici, vous pouvez surveiller et analyser les données sur les maladies, gérer les jeux de données et obtenir des insights sur les tendances mondiales de santé."
         },
         "actions": {
             "title": "Que souhaitez-vous faire aujourd’hui ?",
@@ -39,7 +39,7 @@
             "manage_data": "📂 Gérer les données : Consultez les enregistrements existants ou importez de nouvelles données en tant qu’administrateur dans la base de données.",
             "analyze": "🔍 Analyser les tendances : Plongez plus profondément dans les données pour découvrir des motifs et des insights."
         },
-        "navigation_tip": "Utilisez la barre latérale pour naviguer dans le tableau de bord et accéder aux outils nécessaires."
+        "navigation_tip": "Utilisez la barre latérale pour naviguer dans le tableau de bord et accéder aux outils dont vous avez besoin."
     },
     "db_viz": {
         "title": "Visualisation de la base de données 🔬",
@@ -55,19 +55,26 @@
         "title": "Import CSV ↧",
         "file_uploader": "Choisissez un fichier CSV",
         "preview_title": "Aperçu du fichier CSV importé :",
-        "import_button": "Importer le CSV dans la base",
+        "import_button": "Importer le CSV dans la base de données",
         "loading_message": "Importation en cours...",
         "success_message": "CSV importé avec succès !",
         "error_messages": {
-            "api_failure": "Échec de l’import CSV : {message}",
+            "api_failure": "Échec de l’import du CSV : {message}",
             "general_error": "Une erreur est survenue : {error}"
         }
     },
     "manage_users": {
         "title": "Gérer les utilisateurs 👤",
-        "update_button": "Mettre à jour la base utilisateurs",
-        "empty_fields_error": "Veuillez vous assurer qu’aucun champ n’est vide avant la mise à jour.",
-        "update_progress": "Mise à jour de la base utilisateurs... {percent}%",
+        "admin_columns": {
+            "id": "ID",
+            "name": "Nom",
+            "email": "Email",
+            "country": "Pays",
+            "isAdmin": "Administrateur"
+        },
+        "update_button": "Mettre à jour la base des utilisateurs",
+        "empty_fields_error": "Veuillez vérifier qu’aucun champ n’est vide avant la mise à jour.",
+        "update_progress": "Mise à jour de la base des utilisateurs... {percent}%",
         "update_success": "Utilisateurs mis à jour avec succès !",
         "update_error": "Échec de la mise à jour des utilisateurs. Veuillez vérifier qu’aucun champ n’est vide.",
         "no_data_error": "Aucune donnée utilisateur disponible ou erreur API."
@@ -92,6 +99,7 @@
     },
     "profile": {
         "title": "Votre profil",
+        "language_selection": "Langue",
         "user_info": {
             "user": "Utilisateur :",
             "email": "Email :",
@@ -99,7 +107,7 @@
             "isAdmin": "Administrateur :"
         },
         "password_section": {
-            "title": "Mettez à jour votre mot de passe",
+            "title": "Mettre à jour votre mot de passe",
             "current_password": "Votre mot de passe",
             "new_password": "Nouveau mot de passe",
             "confirm_password": "Confirmer le mot de passe",
@@ -111,10 +119,10 @@
             "success": "Mot de passe mis à jour avec succès !",
             "api_error": "Échec de la mise à jour du mot de passe."
         },
-        "logout_button": "Se déconnecter"
+        "logout_button": "Déconnexion"
     },
     "stats": {
-        "title": "Tableau de bord des statistiques de maladies",
+        "title": "Tableau de bord des statistiques des maladies",
         "data_fetch": {
             "no_data": "Aucune donnée disponible à afficher.",
             "api_error": "Échec de récupération des données depuis l’API : {error}",
@@ -124,7 +132,7 @@
             "month_range": {
                 "title": "📅 Sélectionnez une plage de mois consécutifs",
                 "label": "Plage de mois :",
-                "format": "de {start} à {end}"
+                "format": "De {start} à {end}"
             },
             "statistic": {
                 "title": "📊 Sélectionnez la statistique à afficher",
@@ -136,8 +144,8 @@
             }
         },
         "visualizations": {
-            "map_title": "Propagation des maladies par pays ({stat})",
-            "table_title": "📋 Tableau des données brutes (accessible)"
+            "map_title": "Propagation de la maladie par pays ({stat})",
+            "table_title": "📋 Tableau des données brutes (Accessible)"
         }
     }
 }

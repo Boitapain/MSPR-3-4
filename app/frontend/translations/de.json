@@ -65,6 +65,13 @@
     },
     "manage_users": {
         "title": "Benutzer verwalten 👤",
+        "admin_columns": {
+        "id": "ID",
+        "name": "Name",
+        "email": "E-Mail",
+        "country": "Land",
+        "isAdmin": "Administrator"
+        },
         "update_button": "Benutzerdatenbank aktualisieren",
         "empty_fields_error": "Bitte stelle sicher, dass keine Felder leer sind, bevor du aktualisierst.",
         "update_progress": "Benutzerdatenbank wird aktualisiert... {percent}%",
@@ -92,6 +99,7 @@
     },
     "profile": {
         "title": "Dein Profil",
+        "language_selection": "Sprache",
         "user_info": {
             "user": "Benutzer:",
             "email": "E-Mail:",

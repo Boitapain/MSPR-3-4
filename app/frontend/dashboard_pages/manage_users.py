@@ -3,14 +3,8 @@ import pandas as pd
 import requests
 import time
 
-from translations import load_translations
-
 def manage_users(user):
-    lang = st.session_state['language']
-    translations = load_translations(lang)
-    t = translations['manage_users']
-
-    st.markdown(f"<h3 style='text-align: center;'>{t['title']}</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center;'>Manage Users 👤</h3>", unsafe_allow_html=True)
 
     if 'users_updated' in st.session_state:
         st.session_state.pop("users_updated")
@@ -36,17 +30,14 @@ def manage_users(user):
                         "country": st.column_config.TextColumn(
                             default="USA"
                         ),
-                        "isAdmin": st.column_config.CheckboxColumn(
-                            label=t['admin_columns']['isAdmin'], 
-                            default=False
-                        )
+                        "isAdmin": st.column_config.CheckboxColumn(label="Admin", default=False)
                     },
                     num_rows="dynamic"
                 )
-                if st.button(t['update_button']):
+                if st.button("Update users database"):
                     users_edited["country"] = users_edited["country"].fillna("USA")
                     if users_edited.isnull().values.any():
-                        st.error(t['empty_fields_error'])
+                        st.error("Please ensure there are no empty fields before updating.")
                     else:
                         data_json = users_edited.to_json(orient="records")
                         response = requests.put(
@@ -55,23 +46,19 @@ def manage_users(user):
                             headers={"Content-Type": "application/json"}
                         )
                         if response.status_code == 200:
-                            my_bar = st.progress(0, text=t['update_progress'].format(percent=0))
+                            my_bar = st.progress(0, text="Updating users database...")
                             for percent_complete in range(100):
                                 time.sleep(0.01)
-                                my_bar.progress(
-                                    percent_complete + 1, 
-                                    text=t['update_progress'].format(percent=percent_complete + 1)
-                                )
+                                my_bar.progress(percent_complete + 1, text=f"Updating users database... {percent_complete + 1}%")
                             time.sleep(1)
                             my_bar.empty()
-                            st.success(t['update_success'])
                             st.session_state["users_updated"] = True
                             st.rerun()
                         else:
-                            st.error(t['update_error'])
+                            st.error("Failed to update users. Please ensure there are no empty fields.")
         else:
             cols = st.columns([1, 2, 1])
             with cols[1]:
                 st.dataframe(users)
     except requests.exceptions.RequestException as e:
-        st.error(t['no_data_error'])
+        st.error("No user data available or API error.")
