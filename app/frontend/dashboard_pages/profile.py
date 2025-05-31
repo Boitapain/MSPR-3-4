@@ -131,8 +131,4 @@ def profile(user):
             help=t['help_messages']['logout']
         ):
             st.session_state.clear()
-<<<<<<< HEAD
             st.rerun()
-=======
-            st.rerun()
->>>>>>> 100c84a (31.05.2025 - Frontend : refresh session_state when logout)
