@@ -47,7 +47,7 @@ def manage_users(user):
                 ):
                     users_edited["country"] = users_edited["country"].fillna("USA")
                     if users_edited.isnull().values.any():
-                        st.error("Please ensure there are no empty fields before updating.")
+                        st.error(t['empty_fields_error'])
                     else:
                         data_json = users_edited.to_json(orient="records")
                         response = requests.put(
@@ -70,10 +70,10 @@ def manage_users(user):
                             st.session_state["users_updated"] = True
                             st.rerun()
                         else:
-                            st.error("Failed to update users. Please ensure there are no empty fields.")
+                            st.error(t['update_error'])
         else:
             cols = st.columns([1, 2, 1])
             with cols[1]:
                 st.dataframe(users, help=t['help_messages']['readonly_view'])
     except requests.exceptions.RequestException as e:
-        st.error("No user data available or API error.")
+        st.error(t['no_data_error'])
