@@ -35,6 +35,14 @@ def switch_language(country):
             st.session_state['language'] = 'en' # Default to English if country is not recognized
 
 def dashboard(user):
+    
+    url = "";
+    if(os.getenv("RENDER")):
+        url = st.session_state["API_URL"]
+    else :
+        url = "http://localhost:5001"
+
+        
     switch_language(user["country"])
     lang = st.session_state['language']
     translations = load_translations(lang)
