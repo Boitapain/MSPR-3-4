@@ -95,7 +95,5 @@ def profile(user):
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         if st.button(t['logout_button'], icon=":material/logout:"):
-            st.session_state['page'] = 'login'
-            st.session_state['logged_in'] = False
-            st.session_state['user'] = None
+            st.session_state.clear()
             st.rerun()
