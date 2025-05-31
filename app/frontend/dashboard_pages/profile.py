@@ -96,4 +96,8 @@ def profile(user):
     with col1:
         if st.button(t['logout_button'], icon=":material/logout:"):
             st.session_state.clear()
+<<<<<<< HEAD
             st.rerun()
+=======
+            st.rerun()
+>>>>>>> 100c84a (31.05.2025 - Frontend : refresh session_state when logout)
