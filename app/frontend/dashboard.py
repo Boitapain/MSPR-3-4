@@ -10,13 +10,6 @@ import os
 
 from translations import load_translations
 
-url = "";
-if(os.getenv("RENDER")):
-    url = f"{st.session_state['API_URL']}"
-else :
-    url = "http://localhost:5001"
-
-
 def switch_language(country):
     """Switch the language based on the user's country."""
     if not st.session_state.get('update_language', False):
@@ -30,6 +23,13 @@ def switch_language(country):
             st.session_state['language'] = 'en' # Default to English if country is not recognized
 
 def dashboard(user):
+    
+    url = "";
+    if(os.getenv("RENDER")):
+        url = f"{st.session_state['API_URL']}"
+    else :
+        url = "http://localhost:5001"
+    
     switch_language(user["country"])
     lang = st.session_state['language']
     translations = load_translations(lang)
