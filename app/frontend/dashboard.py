@@ -12,7 +12,7 @@ from translations import load_translations
 
 url = "";
 if(os.getenv("RENDER")):
-    url = st.session_state["API_URL"]
+    url = st.session_state['API_URL']
 else :
     url = "http://localhost:5001"
 
