@@ -24,14 +24,15 @@ def switch_language(country):
 
 def switch_language(country):
     """Switch the language based on the user's country."""
-    if country == "USA":
-        st.session_state['language'] = 'en'
-    elif country == "France":
-        st.session_state['language'] = 'fr'
-    elif country == "Suisse":
-        st.session_state['language'] = 'fr'
-    else:
-        st.session_state['language'] = 'en' # Default to English if country is not recognized
+    if not st.session_state.get('update_language', False):
+        if country == "USA":
+            st.session_state['language'] = 'en'
+        elif country == "France":
+            st.session_state['language'] = 'fr'
+        elif country == "Suisse":
+            st.session_state['language'] = 'fr'
+        else:
+            st.session_state['language'] = 'en' # Default to English if country is not recognized
 
 def dashboard(user):
     switch_language(user["country"])
