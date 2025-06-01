@@ -4,7 +4,10 @@ import pandas as pd
 import pickle
 from flask import Flask, request, jsonify, send_from_directory
 from flask_swagger_ui import get_swaggerui_blueprint
-from db import add_user, get_users, authenticate_user, get_diseases, update_diseases, initialize_db, update_users as db_update_users
+from db import (
+    add_user, get_users, authenticate_user, get_diseases, update_diseases,
+    initialize_db, update_users as db_update_users, update_user_password
+)
 
 
 app = Flask(__name__)
@@ -84,7 +87,6 @@ def update_password():
     if new_password != confirm_password:
         return jsonify({"message": "Les nouveaux mots de passe ne correspondent pas."}), 400
 
-    from db import update_user_password
     success = update_user_password(email, old_password, new_password)
     if success:
         return jsonify({"message": "Mot de passe mis à jour avec succès."}), 200

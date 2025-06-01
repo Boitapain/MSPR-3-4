@@ -3,13 +3,14 @@ Unit tests for the API endpoints in app.api.api
 """
 import unittest
 from unittest.mock import patch, MagicMock
-from app.api import api
+from app.api.api import app
 
 class ApiTestCase(unittest.TestCase):
     """Test case for API endpoints in app.api.api"""
+    # pylint: disable=too-many-public-methods
     def setUp(self):
         """Set up test client for API tests."""
-        self.app = api.app.test_client()
+        self.app = app.test_client()
         self.app.testing = True
 
     @patch("app.api.api.get_users")
@@ -134,6 +135,133 @@ class ApiTestCase(unittest.TestCase):
         response = self.app.put('/update_diseases_route', json={"diseases": "[]"})
         self.assertEqual(response.status_code, 500)
         self.assertIn("Update error", response.get_data(as_text=True))
+
+    @patch("app.api.api.db_update_users")
+    @patch("pandas.read_json")
+    # pylint: disable=unused-argument
+    def test_update_users_success(self, mock_read_json, mock_db_update_users):
+        """Test successful update of users."""
+        mock_read_json.return_value = MagicMock(
+            isnull=MagicMock(
+                return_value=MagicMock(
+                    values=MagicMock(any=lambda: False)
+                )
+            )
+        )
+        mock_db_update_users.return_value = True
+        payload = {"users": "[]"}
+        response = self.app.put('/update_users', json=payload)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("Users updated successfully", response.get_data(as_text=True))
+
+    def test_update_users_no_data(self):
+        """Test update users with no data provided."""
+        response = self.app.put('/update_users', json={})
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("No data provided", response.get_data(as_text=True))
+
+    @patch("pandas.read_json")
+    def test_update_users_null_values(self, mock_read_json):
+        """Test update users with null values in data."""
+        mock_read_json.return_value = MagicMock(
+            isnull=MagicMock(
+                return_value=MagicMock(
+                    values=MagicMock(any=lambda: True)
+                )
+            )
+        )
+        payload = {"users": "[]"}
+        response = self.app.put('/update_users', json=payload)
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("Data contains null values", response.get_data(as_text=True))
+
+    @patch("app.api.api.db_update_users", side_effect=Exception("Update users error"))
+    @patch("pandas.read_json")
+    # pylint: disable=unused-argument
+    def test_update_users_exception(self, mock_read_json, mock_db_update_users):
+        """Test update users exception handling."""
+        mock_read_json.return_value = MagicMock(
+            isnull=MagicMock(
+                return_value=MagicMock(
+                    values=MagicMock(any=lambda: False)
+                )
+            )
+        )
+        payload = {"users": "[]"}
+        response = self.app.put('/update_users', json=payload)
+        self.assertEqual(response.status_code, 500)
+        self.assertIn("Update users error", response.get_data(as_text=True))
+
+    @patch("app.api.api.update_user_password")
+    # pylint: disable=unused-argument
+    def test_update_password_success(self, mock_update_user_password):
+        """Test successful password update."""
+        mock_update_user_password.return_value = True
+        payload = {
+            "email": "test@test.com",
+            "old_password": "old",
+            "new_password": "new",
+            "confirm_password": "new"
+        }
+        response = self.app.post('/update_password', json=payload)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_json()["message"], "Mot de passe mis à jour avec succès.")
+
+    @patch("app.api.api.update_user_password")
+    # pylint: disable=unused-argument
+    def test_update_password_fail(self, mock_update_user_password):
+        """Test password update failure (wrong old password)."""
+        mock_update_user_password.return_value = False
+        payload = {
+            "email": "test@test.com",
+            "old_password": "wrong",
+            "new_password": "new",
+            "confirm_password": "new"
+        }
+        response = self.app.post('/update_password', json=payload)
+        self.assertEqual(response.status_code, 401)
+        self.assertIn("Ancien mot de passe incorrect.", response.get_data(as_text=True))
+
+    def test_update_password_missing_fields(self):
+        """Test update password with missing fields."""
+        payload = {
+            "email": "",
+            "old_password": "",
+            "new_password": "",
+            "confirm_password": ""
+        }
+        response = self.app.post('/update_password', json=payload)
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("Tous les champs sont requis.", response.get_data(as_text=True))
+
+    def test_update_password_mismatch(self):
+        """Test update password with mismatched new and confirm password."""
+        payload = {
+            "email": "test@test.com",
+            "old_password": "old",
+            "new_password": "new1",
+            "confirm_password": "new2"
+        }
+        response = self.app.post('/update_password', json=payload)
+        self.assertEqual(response.status_code, 400)
+        self.assertIn(
+            "Les nouveaux mots de passe ne correspondent pas.",
+            response.get_data(as_text=True)
+        )
+
+    @patch("app.api.api.update_user_password", side_effect=Exception("Update password error"))
+    # pylint: disable=unused-argument
+    def test_update_password_exception(self, mock_update_user_password):
+        """Test update password exception handling."""
+        payload = {
+            "email": "test@test.com",
+            "old_password": "old",
+            "new_password": "new",
+            "confirm_password": "new"
+        }
+        response = self.app.post('/update_password', json=payload)
+        self.assertEqual(response.status_code, 500)
+        # Do not check for message, as Flask returns a default 500 page
 
 if __name__ == "__main__":
     unittest.main()
