@@ -263,5 +263,60 @@ class ApiTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 500)
         # Do not check for message, as Flask returns a default 500 page
 
+    @patch("pickle.load")
+    @patch("builtins.open")
+    def test_predict_success(self, mock_open_builtin, mock_pickle_load):
+        """Test successful prediction with three values."""
+        mock_model = MagicMock()
+        mock_prediction = MagicMock()
+        mock_prediction.tolist.return_value = [[14338, 551, 2796]]
+        mock_model.predict.return_value = mock_prediction
+        mock_pickle_load.return_value = mock_model
+
+        payload = {
+            "cases": 2465,
+            "deaths": 354,
+            "recovered": 766,
+            "country": 174
+        }
+        response = self.app.post('/predict', json=payload)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("prediction", response.get_json())
+        self.assertEqual(response.get_json()["prediction"], [[14338, 551, 2796]])
+        
+    def test_predict_missing_field(self):
+        """Test predict route with missing required field (should fail)."""
+        payload = {
+            "cases": 2465,
+            "deaths": 354,
+            # "recovered" is missing
+            "country": 174
+        }
+        response = self.app.post('/predict', json=payload)
+        self.assertEqual(response.status_code, 500)  # Should fail, expecting error due to missing field
+        self.assertIn("recovered", response.get_data(as_text=True))
+        
+    @patch("pickle.load")
+    @patch("builtins.open")
+    def test_predict_wrong_result(self, mock_open_builtin, mock_pickle_load):
+        """Test predict route returns wrong prediction (should fail if matches expected)."""
+        mock_model = MagicMock()
+        mock_prediction = MagicMock()
+        # Simulate a wrong prediction
+        mock_prediction.tolist.return_value = [[999, 888, 777]]
+        mock_model.predict.return_value = mock_prediction
+        mock_pickle_load.return_value = mock_model
+
+        payload = {
+            "cases": 53342,
+            "deaths": 3421,
+            "recovered": 9065,
+            "country": 62
+        }
+        response = self.app.post('/predict', json=payload)
+        self.assertEqual(response.status_code, 200)
+        # This will fail if the prediction matches the expected correct result
+        self.assertNotEqual(response.get_json()["prediction"], [[138933, 15056, 49670]])
+        
 if __name__ == "__main__":
     unittest.main()
