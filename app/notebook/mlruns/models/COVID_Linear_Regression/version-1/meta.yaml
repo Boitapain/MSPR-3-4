@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748807018373
+current_stage: None
+description: null
+last_updated_timestamp: 1748807018373
+name: COVID_Linear_Regression
+run_id: 4c47c632f9a446a3b214b887fb86b4aa
+run_link: null
+source: file:///app/mlruns/740990697226557777/4c47c632f9a446a3b214b887fb86b4aa/artifacts/covid_model
+status: READY
+status_message: null
+storage_location: file:///app/mlruns/740990697226557777/4c47c632f9a446a3b214b887fb86b4aa/artifacts/covid_model
+user_id: null
+version: 1

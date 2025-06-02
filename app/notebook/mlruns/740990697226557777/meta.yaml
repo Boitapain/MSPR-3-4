@@ -1,0 +1,6 @@
+artifact_location: file:///app/mlruns/740990697226557777
+creation_time: 1748807012838
+experiment_id: '740990697226557777'
+last_update_time: 1748807012838
+lifecycle_stage: active
+name: COVID_Linear_Regression
