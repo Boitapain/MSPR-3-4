@@ -58,6 +58,8 @@ def update_users_route():
     data = request.get_json()
     df = data.get('users')
     
+    print("Received data for update:", df)  # Debugging line to check received data
+    
     if df is None or not df:
         return jsonify({"message": "No data provided"}), 400
     if pd.read_json(StringIO(df)).isnull().values.any():

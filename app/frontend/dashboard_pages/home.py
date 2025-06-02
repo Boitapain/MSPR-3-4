@@ -1,28 +1,36 @@
 import streamlit as st
+from translations import load_translations
 
 def home(user):
-    st.markdown(f"<h3 style='text-align: center;'>Welcome back, {user['name']}! 👋</h3>", unsafe_allow_html=True)
+    lang = st.session_state.get('language', 'en')
+    translations = load_translations(lang)
+    t = translations['home']
 
+    # Welcome message with user's name
     st.markdown(
-        """
-        #
+        f"<h3 style='text-align: center;'>{t['welcome'].format(name=user['name'])}</h3>",
+        unsafe_allow_html=True
+    )
+    # Dashboard introduction
+    st.markdown(
+        f"""
         <p style='text-align: center; font-size: 18px;'>
-        This is your Disease Tracking Dashboard. Here, you can monitor and analyze disease data, 
-        manage datasets, and gain insights into global health trends.
-        </p>
+        <b>{t['intro']['title']}</b><br>
+        {t['intro']['description']}
         <hr>
-        <h4 style='text-align: center;'>What would you like to do today?</h4>
+        <h4 style='text-align: center;'>{t['actions']['title']}</h4>
         <ul style='font-size: 16px;'>
-            <li>📊 <b>View Statistics:</b> Explore disease trends and visualize data on an interactive map.</li>
-            <li>📂 <b>Manage Data:</b> Review existing records or imports new data as an admin in the database.</li>
-            <li>🔍 <b>Analyze Trends:</b> Dive deeper into the data to uncover patterns and insights.</li>
+            <li>{t['actions']['statistics']}</li>
+            <li>{t['actions']['manage_data']}</li>
+            <li>{t['actions']['analyze']}</li>
         </ul>
         <p style='text-align: center; font-size: 16px;'>
-        Use the sidebar to navigate through the dashboard and access the tools you need.
+        {t['navigation_tip']}
         </p>
         """,
         unsafe_allow_html=True
     )
 
 if __name__ == "__main__":
+    st.session_state['language'] = 'en'  # Default language
     home({"name": "Test User"})
