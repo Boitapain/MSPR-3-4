@@ -90,8 +90,6 @@
         }
     },
     "manage_users": {
-<<<<<<< HEAD
-<<<<<<< HEAD
         "title": "Benutzerverwaltung 👤",
         "admin_columns": {
             "id": "ID",
@@ -99,24 +97,6 @@
             "email": "E-Mail",
             "country": "Land",
             "isAdmin": "Admin"
-=======
-        "title": "Benutzer verwalten 👤",
-        "admin_columns": {
-        "id": "ID",
-        "name": "Name",
-        "email": "E-Mail",
-        "country": "Land",
-        "isAdmin": "Administrator"
->>>>>>> 74e9dd1 (31.05.2025 - Frontend : updated language selection)
-=======
-        "title": "Benutzerverwaltung 👤",
-        "admin_columns": {
-            "id": "ID",
-            "name": "Name",
-            "email": "E-Mail",
-            "country": "Land",
-            "isAdmin": "Admin"
->>>>>>> b7c38ec (31.05.2025 - Frontend : Ajout balises help pour l'accesisbilité)
         },
         "update_button": "Benutzerdatenbank aktualisieren",
         "empty_fields_error": "Bitte stellen Sie sicher, dass alle Felder ausgefüllt sind.",
@@ -159,15 +139,7 @@
         }
     },
     "profile": {
-<<<<<<< HEAD
-<<<<<<< HEAD
         "title": "Ihr Profil",
-=======
-        "title": "Dein Profil",
->>>>>>> 74e9dd1 (31.05.2025 - Frontend : updated language selection)
-=======
-        "title": "Ihr Profil",
->>>>>>> b7c38ec (31.05.2025 - Frontend : Ajout balises help pour l'accesisbilité)
         "language_selection": "Sprache",
         "user_info": {
             "user": "Benutzer:",
@@ -242,8 +214,4 @@
             }
         }
     }
-<<<<<<< HEAD
-}   
-=======
-}   
->>>>>>> b7c38ec (31.05.2025 - Frontend : Ajout balises help pour l'accesisbilité)
+}

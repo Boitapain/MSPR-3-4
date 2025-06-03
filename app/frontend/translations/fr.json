@@ -137,13 +137,8 @@
     }
   },
   "profile": {
-<<<<<<< HEAD
     "language_selection": "Langue",
     "title": "Votre profil",
-=======
-    "title": "Votre profil",
-    "language_selection": "Langue",
->>>>>>> b7c38ec (31.05.2025 - Frontend : Ajout balises help pour l'accesisbilité)
     "user_info": {
       "user": "Utilisateur :",
       "email": "Email :",
