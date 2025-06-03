@@ -6,6 +6,7 @@ venv/
 __pycache__/
 
 app/__pycache__/
+.pytest_cache/
 app/.pytest_cache/
 app/frontend/__pycache__/
 
@@ -15,6 +16,8 @@ app/notebook/data_etl_output.csv
 app/notebook/model.pkl
 app/api/disease_track.db
 app/notebook/mlruns/*
+app/notebook/.ipynb_checkpoints/
+app/api/.pytest_cache/
 
 .vscode
 
