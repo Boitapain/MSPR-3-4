@@ -41,7 +41,7 @@ jobs:
     - name: Zip project for backup
       if: ${{ success() }}
       run: |
-        zip -r project-backup.zip .
+        zip -r project-backup.zip app
 
     # Step 6: Upload backup artifact
     - name: Upload backup artifact
@@ -49,4 +49,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: project-backup
-        path: project-backup.zip
+        path: project-backup.zip .
