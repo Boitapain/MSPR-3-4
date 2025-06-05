@@ -108,19 +108,25 @@ def profile(user):
                 elif new_password != confirm_password:
                     st.error(t['password_section']['errors']['mismatch'])
                 else:
-                    response = requests.post(
-                        f"{st.session_state['API_URL']}/update_password",
-                        json={
-                            "email": user["email"],
-                            "old_password": old_password,
-                            "new_password": new_password,
-                            "confirm_password": confirm_password
-                        }
-                    )
-                    if response.status_code == 200:
-                        st.success(t['password_section']['success'])
-                    else:
-                        st.error(response.json().get("message", t['password_section']['api_error']))
+                    if (
+                        len(new_password) < 8
+                        or not re.search(r"[a-z]", new_password)
+                        or not re.search(r"[A-Z]", new_password)
+                        or not re.search(r"[^a-zA-Z0-9]", new_password)
+                    ):
+                        response = requests.post(
+                            f"{st.session_state['API_URL']}/update_password",
+                            json={
+                                "email": user["email"],
+                                "old_password": old_password,
+                                "new_password": new_password,
+                                "confirm_password": confirm_password
+                            }
+                        )
+                        if response.status_code == 200:
+                            st.success(t['password_section']['success'])
+                        else:
+                            st.error(response.json().get("message", t['password_section']['api_error']))
 
 
     col1, col2, col3, col4 = st.columns(4)
