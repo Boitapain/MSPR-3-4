@@ -73,7 +73,7 @@ def update_users_route():
     except Exception as e:
         return jsonify({"message": str(e)}), 500
     
-@app.route('/update_password', methods=['POST'])
+@app.route('/update_password', methods=['PUT'])
 def update_password():
     data = request.get_json()
     email = data.get('email')

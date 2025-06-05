@@ -126,7 +126,7 @@ paths:
           description: Internal server error
   
   /update_password:
-    post:
+    put:
       summary: Update user password
       requestBody:
         required: true

@@ -203,7 +203,7 @@ class ApiTestCase(unittest.TestCase):
             "new_password": "new",
             "confirm_password": "new"
         }
-        response = self.app.post('/update_password', json=payload)
+        response = self.app.put('/update_password', json=payload)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.get_json()["message"], "Mot de passe mis à jour avec succès.")
 
@@ -218,7 +218,7 @@ class ApiTestCase(unittest.TestCase):
             "new_password": "new",
             "confirm_password": "new"
         }
-        response = self.app.post('/update_password', json=payload)
+        response = self.app.put('/update_password', json=payload)
         self.assertEqual(response.status_code, 401)
         self.assertIn("Ancien mot de passe incorrect.", response.get_data(as_text=True))
 
@@ -230,7 +230,7 @@ class ApiTestCase(unittest.TestCase):
             "new_password": "",
             "confirm_password": ""
         }
-        response = self.app.post('/update_password', json=payload)
+        response = self.app.put('/update_password', json=payload)
         self.assertEqual(response.status_code, 400)
         self.assertIn("Tous les champs sont requis.", response.get_data(as_text=True))
 
