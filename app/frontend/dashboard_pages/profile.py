@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import re
 from translations import load_translations
 
 def profile(user):
