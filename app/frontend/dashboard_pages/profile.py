@@ -115,7 +115,7 @@ def profile(user):
                         or not re.search(r"[A-Z]", new_password)
                         or not re.search(r"[^a-zA-Z0-9]", new_password)
                     ):
-                        response = requests.post(
+                        response = requests.put(
                             f"{st.session_state['API_URL']}/update_password",
                             json={
                                 "email": user["email"],
