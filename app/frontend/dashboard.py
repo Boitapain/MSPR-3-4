@@ -87,16 +87,18 @@ def dashboard(user):
             st.link_button(t["navigation"]["api_docs"], help=t["navigation"]["api_docs_help"], url=f"{url}/swagger", type="tertiary", icon=":material/article:")
         
         # Data Management section
-        st.header(t["sections"]["data_management"])
-        if user["isAdmin"]:
-            st.button(t["buttons"]["csv_import"], help=t["buttons"]["csv_import_help"], type="tertiary", icon=":material/download:", on_click=lambda: st.session_state.update({"dashboard_page": "csv_import"}))
-        st.button(t["buttons"]["database"], help=t["buttons"]["database_help"], type="tertiary", icon=":material/database:", on_click=lambda: st.session_state.update({"dashboard_page": "database"}))
-        st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
+        if(user["country"] == "USA"):
+            st.header(t["sections"]["data_management"])
+            if user["isAdmin"]:
+                st.button(t["buttons"]["csv_import"], help=t["buttons"]["csv_import_help"], type="tertiary", icon=":material/download:", on_click=lambda: st.session_state.update({"dashboard_page": "csv_import"}))
+            st.button(t["buttons"]["database"], help=t["buttons"]["database_help"], type="tertiary", icon=":material/database:", on_click=lambda: st.session_state.update({"dashboard_page": "database"}))
+            st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
         
         # Data Visualization section
         st.header(t["sections"]["data_visualization"])
         
-        st.button(t["buttons"]["statistics"], help=t["buttons"]["statistics_help"], type="tertiary", icon=":material/monitoring:", on_click=lambda: st.session_state.update({"dashboard_page": "statistics"}))
+        if user["country"] != "Suisse":
+            st.button(t["buttons"]["statistics"], help=t["buttons"]["statistics_help"], type="tertiary", icon=":material/monitoring:", on_click=lambda: st.session_state.update({"dashboard_page": "statistics"}))
         st.button(t["buttons"]["predictions"], help=t["buttons"]["predictions_help"], type="tertiary", icon=":material/rocket_launch:", on_click=lambda: st.session_state.update({"dashboard_page": "predictions"}))
         st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
         
