@@ -8,6 +8,15 @@ Notre projet est une application du nom de Disease Track ayant pour but de prév
 
 Grâce à cette application, l'ONU aura accès à un outil de prédiction poussé capable d'aider à la prise de décision au niveau national et international.
 
+## Initialisation de la base de données
+
+Avant de lancer les conteneurs Docker, il est nécessaire d'initialiser la base de données.  
+Depuis le dossier `app`, exécutez la commande suivante :
+
+```sh
+python api/db.py
+```
+
 ## Installation et utilisation avec Docker
 
 Pour lancer l'application en local, assurez-vous d'avoir [Docker](https://www.docker.com/) et [docker-compose](https://docs.docker.com/compose/) installés sur votre machine.
