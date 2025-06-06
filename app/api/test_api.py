@@ -242,7 +242,7 @@ class ApiTestCase(unittest.TestCase):
             "new_password": "new1",
             "confirm_password": "new2"
         }
-        response = self.app.post('/update_password', json=payload)
+        response = self.app.put('/update_password', json=payload)
         self.assertEqual(response.status_code, 400)
         self.assertIn(
             "Les nouveaux mots de passe ne correspondent pas.",
@@ -259,7 +259,7 @@ class ApiTestCase(unittest.TestCase):
             "new_password": "new",
             "confirm_password": "new"
         }
-        response = self.app.post('/update_password', json=payload)
+        response = self.app.put('/update_password', json=payload)
         self.assertEqual(response.status_code, 500)
         # Do not check for message, as Flask returns a default 500 page
 
